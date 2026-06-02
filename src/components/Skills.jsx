@@ -87,9 +87,9 @@ export default function Skills() {
           transition={{ delay: 0.5, duration: 0.8 }}
           className="mt-16 overflow-hidden"
         >
-          <div className="flex gap-3 overflow-hidden relative">
-            <div className="absolute left-0 top-0 bottom-0 w-16 bg-gradient-to-r from-[#070d1f] to-transparent z-10 pointer-events-none" />
-            <div className="absolute right-0 top-0 bottom-0 w-16 bg-gradient-to-l from-[#070d1f] to-transparent z-10 pointer-events-none" />
+            <div className="flex gap-3 overflow-hidden relative">
+              <div className="absolute left-0 top-0 bottom-0 w-16 bg-gradient-to-r from-[var(--bg)] to-transparent z-10 pointer-events-none" />
+              <div className="absolute right-0 top-0 bottom-0 w-16 bg-gradient-to-l from-[var(--bg)] to-transparent z-10 pointer-events-none" />
             <motion.div
               animate={{ x: ['0%', '-50%'] }}
               transition={{ repeat: Infinity, duration: 25, ease: 'linear' }}

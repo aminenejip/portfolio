@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Menu, X } from 'lucide-react'
 import { navLinks } from '../data/portfolio'
+import ThemeToggle from './ThemeToggle'
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false)
@@ -39,9 +40,7 @@ export default function Navbar() {
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.6, ease: 'easeOut' }}
       className={`fixed top-0 w-full z-50 transition-all duration-500 ${
-        scrolled
-          ? 'bg-[rgba(7,13,31,0.88)] backdrop-blur-xl border-b border-white/5 shadow-2xl'
-          : 'bg-transparent'
+        scrolled ? 'nav-scrolled' : 'bg-transparent'
       }`}
     >
       <nav className="section-container flex justify-between items-center py-4 md:py-5">
@@ -81,6 +80,7 @@ export default function Navbar() {
           >
             Hire Me
           </button>
+          <ThemeToggle />
         </div>
 
         {/* Mobile menu toggle */}
@@ -101,7 +101,7 @@ export default function Navbar() {
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.3 }}
-            className="md:hidden overflow-hidden bg-[rgba(7,13,31,0.96)] backdrop-blur-xl border-b border-white/5"
+            className="md:hidden overflow-hidden bg-[var(--bg)] backdrop-blur-xl border-b border-white/5"
           >
             <div className="section-container py-6 flex flex-col gap-4">
               {navLinks.map(link => (

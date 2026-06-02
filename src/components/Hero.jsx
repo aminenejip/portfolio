@@ -209,26 +209,26 @@ export default function Hero() {
                 {/* Main card */}
                 <div className="animate-float relative z-10 rounded-3xl overflow-hidden glass-card p-3 premium-border">
                   {/* Code editor mockup */}
-                  <div className="rounded-2xl bg-[#0a0f20] border border-white/5 overflow-hidden">
+                  <div className="rounded-2xl code-editor border border-white/5 overflow-hidden">
                     {/* Editor top bar */}
-                    <div className="flex items-center gap-2 px-4 py-3 border-b border-white/5 bg-[#0d1528]">
+                    <div className="flex items-center gap-2 px-4 py-3 border-b border-white/5 code-editor-bar">
                       <div className="w-3 h-3 rounded-full bg-red-500/70" />
                       <div className="w-3 h-3 rounded-full bg-yellow-500/70" />
                       <div className="w-3 h-3 rounded-full bg-green-500/70" />
                       <span className="ml-4 font-mono text-[11px] text-outline">portfolio.jsx</span>
                     </div>
                     {/* Code content */}
-                    <div className="p-6 font-mono text-[13px] leading-6 space-y-1">
-                      <p><span className="text-violet-400">const</span> <span className="text-primary">Developer</span> <span className="text-white">= {'{'}</span></p>
-                      <p className="pl-6"><span className="text-secondary">name</span><span className="text-white">: </span><span className="text-green-400">"Amine Neji"</span><span className="text-white">,</span></p>
-                      <p className="pl-6"><span className="text-secondary">role</span><span className="text-white">: </span><span className="text-green-400">"Full-Stack Dev"</span><span className="text-white">,</span></p>
-                      <p className="pl-6"><span className="text-secondary">stack</span><span className="text-white">: [</span></p>
-                      <p className="pl-12"><span className="text-green-400">"React"</span><span className="text-white">, </span><span className="text-green-400">"Spring Boot"</span><span className="text-white">,</span></p>
-                      <p className="pl-12"><span className="text-green-400">"Angular"</span><span className="text-white">, </span><span className="text-green-400">"Laravel"</span></p>
-                      <p className="pl-6"><span className="text-white">],</span></p>
-                      <p className="pl-6"><span className="text-secondary">available</span><span className="text-white">: </span><span className="text-orange-400">true</span></p>
-                      <p><span className="text-white">{'}'}</span></p>
-                      <p className="mt-3 text-outline/60">{'// Currently building awesome things'}</p>
+                    <div className="p-6 font-mono text-[13px] leading-6 space-y-1 dark:text-white light:text-slate-800">
+                      <p><span className="text-violet-500 light:text-violet-600">const</span> <span className="text-primary">Developer</span> <span className="text-on-surface">= {'{'}</span></p>
+                      <p className="pl-6"><span className="text-secondary">name</span><span className="text-on-surface">: </span><span className="text-green-500 light:text-green-700">"Amine Neji"</span><span className="text-on-surface">,</span></p>
+                      <p className="pl-6"><span className="text-secondary">role</span><span className="text-on-surface">: </span><span className="text-green-500 light:text-green-700">"Full-Stack Dev"</span><span className="text-on-surface">,</span></p>
+                      <p className="pl-6"><span className="text-secondary">stack</span><span className="text-on-surface">: [</span></p>
+                      <p className="pl-12"><span className="text-green-500 light:text-green-700">"React"</span><span className="text-on-surface">, </span><span className="text-green-500 light:text-green-700">"Spring Boot"</span><span className="text-on-surface">,</span></p>
+                      <p className="pl-12"><span className="text-green-500 light:text-green-700">"Angular"</span><span className="text-on-surface">, </span><span className="text-green-500 light:text-green-700">"Laravel"</span></p>
+                      <p className="pl-6"><span className="text-on-surface">],</span></p>
+                      <p className="pl-6"><span className="text-secondary">available</span><span className="text-on-surface">: </span><span className="text-orange-500 light:text-orange-700">true</span></p>
+                      <p><span className="text-on-surface">{'}'}</span></p>
+                      <p className="mt-3 text-outline/60 light:text-outline/50">{'// Currently building awesome things'}</p>
                       <div className="flex items-center gap-1 mt-1">
                         <span className="text-outline/60">{'> '}</span>
                         <span className="w-2 h-5 bg-primary/70 animate-pulse" />

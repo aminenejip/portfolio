@@ -2,6 +2,54 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --bg: #f9f9ff;
+  --fg: #191b23;
+  --muted: #424754;
+  --accent: #0058be;
+  --card-bg: rgba(255, 255, 255, 0.72);
+  --card-hover-bg: rgba(255, 255, 255, 0.92);
+  --card-border: rgba(0, 0, 0, 0.07);
+  --card-border-hover: rgba(37, 99, 235, 0.35);
+  --card-glow: rgba(30, 40, 80, 0.12);
+  --input-bg: #ffffff;
+  --input-border: rgba(0, 0, 0, 0.09);
+  --scrub-bg: #f9f9ff;
+  --scrub-thumb: rgba(37, 99, 235, 0.25);
+  --scrub-thumb-hover: rgba(37, 99, 235, 0.45);
+  --overlay-grad: rgba(249, 249, 255, 1);
+  --selection-bg: rgba(37, 99, 235, 0.18);
+  --selection-fg: #191b23;
+  --grid-color: rgba(0, 0, 0, 0.035);
+  --code-bg: #f8fafc;
+  --code-bar: #e2e8f0;
+  --code-border: rgba(0, 0, 0, 0.06);
+}
+
+html.dark {
+  --bg: #070d1f;
+  --fg: #dce1fb;
+  --muted: #c2c6d6;
+  --accent: #adc6ff;
+  --card-bg: rgba(21, 27, 45, 0.4);
+  --card-hover-bg: rgba(21, 27, 45, 0.6);
+  --card-border: rgba(255, 255, 255, 0.05);
+  --card-border-hover: rgba(59, 130, 246, 0.3);
+  --card-glow: rgba(0, 0, 0, 0.5);
+  --input-bg: rgba(255, 255, 255, 0.04);
+  --input-border: rgba(255, 255, 255, 0.08);
+  --scrub-bg: #070d1f;
+  --scrub-thumb: rgba(173, 198, 255, 0.2);
+  --scrub-thumb-hover: rgba(173, 198, 255, 0.4);
+  --overlay-grad: rgba(12, 19, 36, 1);
+  --selection-bg: rgba(173, 198, 255, 0.35);
+  --selection-fg: #fff;
+  --grid-color: rgba(0, 0, 0, 0.06);
+  --code-bg: #0a0f20;
+  --code-bar: #0d1528;
+  --code-border: rgba(255, 255, 255, 0.05);
+}
+
 @layer base {
   html {
     font-family: 'Inter', sans-serif;
@@ -9,43 +57,38 @@
   }
 
   body {
-    background-color: #070d1f;
-    color: #dce1fb;
+    background-color: var(--bg);
+    color: var(--fg);
     overflow-x: hidden;
     margin: 0;
   }
 
   ::selection {
-    background-color: rgba(173, 198, 255, 0.2);
-    color: #fff;
+    background-color: var(--selection-bg);
+    color: var(--selection-fg);
   }
 
   ::-webkit-scrollbar { width: 5px; }
-  ::-webkit-scrollbar-track { background: #070d1f; }
-  ::-webkit-scrollbar-thumb {
-    background: rgba(173, 198, 255, 0.2);
-    border-radius: 3px;
-  }
-  ::-webkit-scrollbar-thumb:hover {
-    background: rgba(173, 198, 255, 0.4);
-  }
+  ::-webkit-scrollbar-track { background: var(--scrub-bg); }
+  ::-webkit-scrollbar-thumb { background: var(--scrub-thumb); border-radius: 3px; }
+  ::-webkit-scrollbar-thumb:hover { background: var(--scrub-thumb-hover); }
 }
 
 @layer components {
   .glass-card {
-    background: rgba(21, 27, 45, 0.4);
+    background: var(--card-bg);
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
-    border: 1px solid rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--card-border);
+    box-shadow: 0px 4px 6px var(--card-glow), 0px 10px 15px var(--card-glow);
     transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
     position: relative;
     overflow: hidden;
   }
 
   .glass-card:hover {
-    border-color: rgba(59, 130, 246, 0.3);
-    background: rgba(21, 27, 45, 0.6);
-    box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.5), 0 0 20px rgba(59, 130, 246, 0.1);
+    border-color: var(--card-border-hover);
+    background: var(--card-hover-bg);
   }
 
   .primary-btn {
@@ -85,12 +128,12 @@
     font-weight: 600;
     border: 1px solid rgba(59, 130, 246, 0.3);
     background: rgba(59, 130, 246, 0.03);
-    color: #adc6ff;
+    color: var(--accent);
     transition: all 0.3s ease;
   }
 
   .ghost-btn:hover {
-    background: rgba(59, 130, 246, 0.1);
+    background: rgba(59, 130, 246, 0.12);
     border-color: #3b82f6;
     transform: translateY(-2px);
   }
@@ -104,7 +147,7 @@
     border: 1px solid rgba(59, 130, 246, 0.2);
     padding: 3px 10px;
     border-radius: 4px;
-    color: #93c5fd;
+    color: var(--accent);
     white-space: nowrap;
   }
 
@@ -138,15 +181,14 @@
   }
 }
 
-/* Subtle grid overlay */
 body::before {
   content: '';
   position: fixed;
   top: 0; left: 0;
   width: 100%; height: 100%;
   background-image:
-    linear-gradient(to right, rgba(255,255,255,0.018) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(255,255,255,0.018) 1px, transparent 1px);
+    linear-gradient(to right, var(--grid-color) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--grid-color) 1px, transparent 1px);
   background-size: 44px 44px;
   pointer-events: none;
   z-index: 0;
@@ -161,4 +203,22 @@ body::before {
   opacity: 0.1;
   z-index: 0;
   pointer-events: none;
+}
+
+.nav-scrolled {
+  background: var(--bg);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--card-border);
+  box-shadow: 0 20px 40px var(--card-glow);
+}
+
+.code-editor {
+  background: var(--code-bg);
+  border-color: var(--code-border);
+}
+
+.code-editor-bar {
+  background: var(--code-bar);
+  border-color: var(--code-border);
 }

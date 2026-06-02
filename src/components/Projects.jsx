@@ -33,7 +33,7 @@ function ProjectCard({ project, index }) {
           <p>{'}'}</p>
         </div>
         {/* Overlay gradient */}
-        <div className="absolute inset-0 bg-gradient-to-t from-[#0c1324] via-transparent to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[var(--overlay-grad)] via-transparent to-transparent" />
         {/* Tech chips bottom */}
         <div className="absolute bottom-4 left-5 flex flex-wrap gap-2">
           {project.techs.map(t => (

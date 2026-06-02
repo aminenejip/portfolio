@@ -45,7 +45,7 @@ export default function About() {
                   <div className="w-32 h-32 rounded-full border-2 border-primary/30 bg-surface-container overflow-hidden shadow-2xl flex items-center justify-center">
                     <span className="font-sora font-extrabold text-5xl text-primary/80">AN</span>
                   </div>
-                  <div className="absolute -bottom-1 right-1 w-5 h-5 bg-green-500 rounded-full border-4 border-[#070d1f]" />
+                  <div className="absolute -bottom-1 right-1 w-5 h-5 bg-green-500 rounded-full border-4 border-[var(--bg)]" />
                 </div>
 
                 <div>
