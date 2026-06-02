@@ -24,7 +24,7 @@ export default function WorkProcess() {
           <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-primary/70">
             — How I Work
           </span>
-          <h2 className="font-sora font-extrabold text-4xl md:text-5xl text-white">
+          <h2 className="font-sora font-extrabold text-4xl md:text-5xl text-on-surface">
             The Engineering Loop
           </h2>
           <p className="text-on-surface-variant max-w-xl mx-auto leading-relaxed">
@@ -51,7 +51,7 @@ export default function WorkProcess() {
                 >
                   {p.step}
                 </div>
-                <span className="font-mono text-[10px] text-white uppercase tracking-widest text-center leading-tight">
+                <span className="font-mono text-[10px] text-on-surface uppercase tracking-widest text-center leading-tight">
                   {p.label}
                 </span>
               </motion.div>

@@ -41,7 +41,7 @@ export default function Contact() {
           <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-primary/70">
             — Get In Touch
           </span>
-          <h2 className="font-sora font-extrabold text-4xl md:text-5xl text-white">
+          <h2 className="font-sora font-extrabold text-4xl md:text-5xl text-on-surface">
             Let's build the future.
           </h2>
           <p className="text-on-surface-variant max-w-xl mx-auto leading-relaxed">
@@ -58,12 +58,12 @@ export default function Contact() {
             transition={{ duration: 0.7, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
             className="lg:col-span-5 space-y-6"
           >
-            <div className="w-16 h-1 bg-gradient-to-r from-primary to-secondary rounded-full" />
+              <div className="w-16 h-1 bg-gradient-to-r from-primary to-secondary rounded-full" />
 
-            <p className="text-on-surface-variant leading-relaxed">
-              I respond within 24 hours. Let's discuss your project, a collaboration, or
-              just connect about technology.
-            </p>
+              <p className="text-muted leading-relaxed">
+                I respond within 24 hours. Let's discuss your project, a collaboration, or
+                just connect about technology.
+              </p>
 
             {/* Contact cards */}
             <div className="space-y-4">
@@ -75,8 +75,8 @@ export default function Contact() {
                   <Mail size={18} />
                 </div>
                 <div>
-                  <span className="block font-mono text-[9px] text-outline uppercase tracking-widest mb-1">Email</span>
-                  <span className="text-white text-sm font-medium">aminenejip@gmail.com</span>
+                  <span className="block font-mono text-[9px] text-muted uppercase tracking-widest mb-1">Email</span>
+                  <span className="text-on-surface text-sm font-medium">aminenejip@gmail.com</span>
                 </div>
               </a>
 
@@ -88,8 +88,8 @@ export default function Contact() {
                   <LinkedinIcon size={18} />
                 </div>
                 <div>
-                  <span className="block font-mono text-[9px] text-outline uppercase tracking-widest mb-1">LinkedIn</span>
-                  <span className="text-white text-sm font-medium">linkedin.com/in/amine-neji</span>
+                  <span className="block font-mono text-[9px] text-muted uppercase tracking-widest mb-1">LinkedIn</span>
+                  <span className="text-on-surface text-sm font-medium">linkedin.com/in/amine-neji</span>
                 </div>
               </a>
             </div>
@@ -124,8 +124,8 @@ export default function Contact() {
                   <CheckCircle size={32} className="text-green-400" />
                 </div>
                 <div>
-                  <h3 className="font-sora font-bold text-2xl text-white">Message Sent!</h3>
-                  <p className="text-on-surface-variant mt-2">
+                  <h3 className="font-sora font-bold text-2xl text-on-surface">Message Sent!</h3>
+                  <p className="text-muted mt-2">
                     Thanks for reaching out. I'll get back to you within 24 hours.
                   </p>
                 </div>
@@ -153,7 +153,7 @@ export default function Contact() {
                       onChange={handleChange}
                       placeholder="John Doe"
                       required
-                      className="w-full bg-white/[0.04] border border-white/8 rounded-xl px-4 py-3.5 text-white placeholder-outline/40 text-sm outline-none focus:border-primary/50 focus:ring-1 focus:ring-primary/20 transition-all"
+                      className="w-full bg-[var(--input-bg)] border border-[var(--input-border)] rounded-xl px-4 py-3.5 text-on-surface placeholder:text-muted/60 text-sm outline-none focus:border-primary/50 focus:ring-1 focus:ring-primary/20 transition-all"
                     />
                   </div>
                   <div className="space-y-2">
@@ -167,7 +167,7 @@ export default function Contact() {
                       onChange={handleChange}
                       placeholder="john@company.com"
                       required
-                      className="w-full bg-white/[0.04] border border-white/8 rounded-xl px-4 py-3.5 text-white placeholder-outline/40 text-sm outline-none focus:border-primary/50 focus:ring-1 focus:ring-primary/20 transition-all"
+                      className="w-full bg-[var(--input-bg)] border border-[var(--input-border)] rounded-xl px-4 py-3.5 text-on-surface placeholder:text-muted/60 text-sm outline-none focus:border-primary/50 focus:ring-1 focus:ring-primary/20 transition-all"
                     />
                   </div>
                 </div>
@@ -176,15 +176,15 @@ export default function Contact() {
                   <label className="font-mono text-[10px] text-outline uppercase tracking-widest pl-1">
                     Project Details
                   </label>
-                  <textarea
-                    name="message"
-                    value={form.message}
-                    onChange={handleChange}
-                    placeholder="Tell me about your project or how I can help..."
-                    required
-                    rows={5}
-                    className="w-full bg-white/[0.04] border border-white/8 rounded-xl px-4 py-3.5 text-white placeholder-outline/40 text-sm outline-none focus:border-primary/50 focus:ring-1 focus:ring-primary/20 transition-all resize-none"
-                  />
+                    <textarea
+                      name="message"
+                      value={form.message}
+                      onChange={handleChange}
+                      placeholder="Tell me about your project or how I can help..."
+                      required
+                      rows={5}
+                      className="w-full bg-[var(--input-bg)] border border-[var(--input-border)] rounded-xl px-4 py-3.5 text-on-surface placeholder:text-muted/60 text-sm outline-none focus:border-primary/50 focus:ring-1 focus:ring-primary/20 transition-all resize-none"
+                    />
                 </div>
 
                 <button

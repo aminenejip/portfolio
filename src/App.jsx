@@ -14,6 +14,7 @@ export default function App() {
       <Navbar />
       <main className="relative z-10">
         <Hero />
+    
         <About />
         <Skills />
         <Projects />

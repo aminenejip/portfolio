@@ -53,7 +53,7 @@ export default function Navbar() {
           <div className="w-9 h-9 rounded-lg bg-primary/10 border border-primary/20 flex items-center justify-center transition-all group-hover:bg-primary/20">
             <span className="font-sora font-extrabold text-primary text-sm">AN</span>
           </div>
-          <span className="font-sora font-bold text-lg text-white tracking-tight">
+          <span className="font-sora font-bold text-lg text-on-surface tracking-tight">
             DevTerminal<span className="text-primary">.</span>
           </span>
         </a>
@@ -101,7 +101,7 @@ export default function Navbar() {
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.3 }}
-            className="md:hidden overflow-hidden bg-[var(--bg)] backdrop-blur-xl border-b border-white/5"
+            className="md:hidden overflow-hidden bg-[var(--bg)] backdrop-blur-xl border-b border-[var(--card-border)]"
           >
             <div className="section-container py-6 flex flex-col gap-4">
               {navLinks.map(link => (

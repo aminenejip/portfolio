@@ -30,7 +30,7 @@ export default function Services() {
   const [ref, inView] = useInView(0.1)
 
   return (
-    <section id="services" className="relative section-padding z-10 bg-[rgba(7,13,31,0.5)]">
+    <section id="services" className="relative section-padding z-10 bg-[var(--bg-secondary)]">
       <div className="section-container" ref={ref}>
         {/* Header */}
         <motion.div
@@ -42,7 +42,7 @@ export default function Services() {
           <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-primary/70">
             — What I Do
           </span>
-          <h2 className="font-sora font-extrabold text-4xl md:text-5xl text-white">
+          <h2 className="font-sora font-extrabold text-4xl md:text-5xl text-on-surface">
             Capabilities
           </h2>
           <p className="text-on-surface-variant max-w-2xl mx-auto leading-relaxed">
@@ -71,7 +71,7 @@ export default function Services() {
 
                 {/* Text */}
                 <div className="space-y-3 flex-1">
-                  <h4 className="font-sora font-bold text-xl text-white">{service.title}</h4>
+                   <h4 className="font-sora font-bold text-xl text-on-surface">{service.title}</h4>
                   <p className="text-on-surface-variant text-sm leading-relaxed">
                     {service.description}
                   </p>
@@ -80,7 +80,7 @@ export default function Services() {
                 {/* Feature list */}
                 <ul className="space-y-2">
                   {service.features.map(f => (
-                    <li key={f} className="flex items-center gap-2.5 font-mono text-[10px] text-outline uppercase tracking-wider">
+                    <li key={f} className="flex items-center gap-2.5 font-mono text-[10px] text-muted uppercase tracking-wider">
                       <span className={`w-1.5 h-1.5 rounded-full ${c.dot} shrink-0`} />
                       {f}
                     </li>

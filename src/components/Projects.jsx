@@ -37,7 +37,7 @@ function ProjectCard({ project, index }) {
         {/* Tech chips bottom */}
         <div className="absolute bottom-4 left-5 flex flex-wrap gap-2">
           {project.techs.map(t => (
-            <span key={t} className="tech-chip bg-[rgba(7,13,31,0.7)] backdrop-blur-md">
+            <span key={t} className="tech-chip bg-white/70 dark:bg-white/10 backdrop-blur-md border border-white/40 dark:border-white/10">
               {t}
             </span>
           ))}
@@ -47,11 +47,11 @@ function ProjectCard({ project, index }) {
       {/* Content */}
       <div className="p-7 space-y-4 flex flex-col flex-1">
         <div className="flex justify-between items-start">
-          <h3 className="font-sora font-bold text-xl text-white">{project.title}</h3>
+          <h3 className="font-sora font-bold text-xl text-on-surface">{project.title}</h3>
           <div className="flex gap-2">
             <a
               href={project.github}
-              className="w-8 h-8 rounded-full flex items-center justify-center border border-white/10 hover:bg-white/10 transition-colors text-on-surface-variant hover:text-white"
+              className="w-8 h-8 rounded-full flex items-center justify-center border border-[var(--card-border)] hover:bg-[var(--card-bg)] transition-colors text-muted hover:text-on-surface"
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -72,7 +72,7 @@ function ProjectCard({ project, index }) {
           {project.description}
         </p>
 
-        <div className="flex items-center justify-between font-mono text-[10px] text-outline uppercase tracking-wider pt-2 border-t border-white/5">
+        <div className="flex items-center justify-between font-mono text-[10px] text-muted uppercase tracking-wider pt-2 border-t border-[var(--card-border)]">
           <span>{project.year}</span>
           <span className="text-primary">{project.label}</span>
         </div>
@@ -87,7 +87,7 @@ export default function Projects() {
   return (
     <section id="projects" className="relative section-padding z-10">
       {/* Background accent */}
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-surface-container-lowest/30 to-transparent pointer-events-none" />
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-surface-container-lowest/20 to-transparent pointer-events-none dark:via-surface-container-lowest/20" />
 
       <div className="section-container">
         {/* Header */}
@@ -101,7 +101,7 @@ export default function Projects() {
             <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-primary/70">
               — Portfolio
             </span>
-            <h2 className="font-sora font-extrabold text-4xl md:text-5xl text-white">
+            <h2 className="font-sora font-extrabold text-4xl md:text-5xl text-on-surface">
               Featured Works
             </h2>
             <p className="text-on-surface-variant max-w-xl leading-relaxed">

@@ -39,7 +39,7 @@ export default function Skills() {
           <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-primary/70">
             — Technical Skills
           </span>
-          <h2 className="font-sora font-extrabold text-4xl md:text-5xl text-white">
+          <h2 className="font-sora font-extrabold text-4xl md:text-5xl text-on-surface">
             My Toolkit
           </h2>
           <p className="text-on-surface-variant max-w-xl mx-auto leading-relaxed">

@@ -31,35 +31,32 @@ export default function About() {
               <div className="absolute -inset-1 bg-gradient-to-r from-primary to-secondary rounded-[2rem] blur opacity-20 group-hover:opacity-35 transition duration-1000" />
 
               {/* Card — overflow visible pour que les badges ne soient pas clippés */}
-              <div className="relative rounded-[2rem] p-10 flex flex-col items-center gap-6 text-center premium-border"
+              <div className="relative rounded-[2rem] p-8 sm:p-10 flex flex-col items-center gap-6 text-center premium-border glass-card"
                 style={{
-                  background: 'rgba(21, 27, 45, 0.4)',
                   backdropFilter: 'blur(20px)',
                   WebkitBackdropFilter: 'blur(20px)',
-                  border: '1px solid rgba(255,255,255,0.05)',
-                  transition: 'all 0.5s cubic-bezier(0.23, 1, 0.32, 1)',
                 }}
               >
                 {/* Avatar */}
                 <div className="relative">
-                  <div className="w-32 h-32 rounded-full border-2 border-primary/30 bg-surface-container overflow-hidden shadow-2xl flex items-center justify-center">
-                    <span className="font-sora font-extrabold text-5xl text-primary/80">AN</span>
+                  <div className="w-24 h-24 sm:w-28 sm:h-28 rounded-full border-2 border-primary/30 bg-surface-container overflow-hidden shadow-2xl flex items-center justify-center">
+                     <span className="font-sora font-extrabold text-4xl sm:text-5xl text-primary">AN</span>
                   </div>
-                  <div className="absolute -bottom-1 right-1 w-5 h-5 bg-green-500 rounded-full border-4 border-[var(--bg)]" />
+                   <div className="absolute -bottom-1 right-1 w-4 h-4 sm:w-5 sm:h-5 bg-green-500 rounded-full border-[3px] sm:border-[4px] border-[var(--bg)]" />
                 </div>
 
                 <div>
-                  <h3 className="font-sora font-bold text-2xl text-white">Amine Neji</h3>
+                  <h3 className="font-sora font-bold text-xl sm:text-2xl text-on-surface">Amine Neji</h3>
                   <p className="font-mono text-sm text-primary mt-1">Full-Stack Engineer</p>
-                  <p className="font-mono text-xs text-outline mt-1">Computer Science Student</p>
+                  <p className="font-mono text-xs text-muted mt-1">Computer Science Student</p>
                 </div>
 
                 {/* Stats */}
-                <div className="grid grid-cols-3 gap-4 w-full pt-2 border-t border-white/5">
+                <div className="grid grid-cols-3 gap-4 w-full pt-2 border-t border-[var(--card-border)]">
                   {stats.map(s => (
                     <div key={s.label} className="text-center">
-                      <span className="block font-sora font-extrabold text-2xl text-white">{s.value}</span>
-                      <span className="font-mono text-[9px] text-outline uppercase tracking-widest mt-1 block leading-tight">{s.label}</span>
+                      <span className="block font-sora font-extrabold text-2xl text-on-surface">{s.value}</span>
+                      <span className="font-mono text-[9px] text-muted uppercase tracking-widest mt-1 block leading-tight">{s.label}</span>
                     </div>
                   ))}
                 </div>
@@ -90,10 +87,10 @@ export default function About() {
               <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-primary/70">
                 — About Me
               </span>
-              <h2 className="font-sora font-extrabold text-4xl md:text-5xl text-white leading-tight">
+              <h2 className="font-sora font-extrabold text-4xl md:text-5xl text-on-surface leading-tight">
                 Driven by Code,{' '}
                 <br />
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary text-gradient">
                   Guided by Design
                 </span>
               </h2>
@@ -133,7 +130,7 @@ export default function About() {
               {['Problem Solver', 'Team Player', 'Fast Learner', 'Detail Oriented'].map(tag => (
                 <span
                   key={tag}
-                  className="px-4 py-1.5 rounded-full bg-white/5 border border-white/10 font-mono text-xs text-on-surface-variant"
+                  className="px-4 py-1.5 rounded-full bg-white/5 dark:bg-white/5 border border-[var(--card-border)] font-mono text-xs text-muted"
                 >
                   {tag}
                 </span>

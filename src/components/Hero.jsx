@@ -121,12 +121,12 @@ export default function Hero() {
             >
               {/* Available badge */}
               <motion.div variants={item}>
-                <div className="inline-flex items-center gap-3 px-4 py-2 rounded-full border border-white/5 bg-white/[0.03] backdrop-blur-md">
+                <div className="inline-flex items-center gap-3 px-4 py-2 rounded-full border border-[var(--card-border)] bg-[var(--card-bg)] backdrop-blur-md">
                   <span className="relative flex h-2 w-2">
                     <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75" />
                     <span className="relative inline-flex rounded-full h-2 w-2 bg-primary" />
                   </span>
-                  <span className="font-mono text-[10px] text-primary/80 uppercase tracking-[0.2em]">
+                  <span className="font-mono text-[10px] text-primary uppercase tracking-[0.2em]">
                     Available for new opportunities
                   </span>
                 </div>
@@ -134,10 +134,10 @@ export default function Hero() {
 
               {/* Headline */}
               <motion.div variants={item} className="space-y-4">
-                <h1 className="font-sora font-extrabold text-5xl md:text-6xl lg:text-7xl text-white leading-[1.08] tracking-tight">
+                <h1 className="font-sora font-extrabold text-5xl md:text-6xl lg:text-7xl text-on-surface leading-[1.08] tracking-tight">
                   Building modern{' '}
                   <br className="hidden sm:block" />
-                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary via-secondary to-tertiary">
+                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary via-secondary to-tertiary text-gradient">
                     digital experiences.
                   </span>
                 </h1>
@@ -207,7 +207,7 @@ export default function Hero() {
             >
               <div className="relative">
                 {/* Main card */}
-                <div className="animate-float relative z-10 rounded-3xl overflow-hidden glass-card p-3 premium-border">
+                <div className="animate-float relative z-10 rounded-3xl overflow-hidden glass-card p-3 premium-border shadow-2xl dark:shadow-black/40">
                   {/* Code editor mockup */}
                   <div className="rounded-2xl code-editor border border-white/5 overflow-hidden">
                     {/* Editor top bar */}
@@ -218,17 +218,17 @@ export default function Hero() {
                       <span className="ml-4 font-mono text-[11px] text-outline">portfolio.jsx</span>
                     </div>
                     {/* Code content */}
-                    <div className="p-6 font-mono text-[13px] leading-6 space-y-1 dark:text-white light:text-slate-800">
-                      <p><span className="text-violet-500 light:text-violet-600">const</span> <span className="text-primary">Developer</span> <span className="text-on-surface">= {'{'}</span></p>
-                      <p className="pl-6"><span className="text-secondary">name</span><span className="text-on-surface">: </span><span className="text-green-500 light:text-green-700">"Amine Neji"</span><span className="text-on-surface">,</span></p>
-                      <p className="pl-6"><span className="text-secondary">role</span><span className="text-on-surface">: </span><span className="text-green-500 light:text-green-700">"Full-Stack Dev"</span><span className="text-on-surface">,</span></p>
+                    <div className="p-6 font-mono text-[13px] leading-6 space-y-1 text-on-surface dark:text-white">
+                      <p><span className="text-secondary">const</span> <span className="text-primary">Developer</span> <span className="text-on-surface">= {'{'}</span></p>
+                      <p className="pl-6"><span className="text-secondary">name</span><span className="text-on-surface">: </span><span className="text-green-400 dark:text-green-400">"Amine Neji"</span><span className="text-on-surface">,</span></p>
+                      <p className="pl-6"><span className="text-secondary">role</span><span className="text-on-surface">: </span><span className="text-green-400 dark:text-green-400">"Full-Stack Dev"</span><span className="text-on-surface">,</span></p>
                       <p className="pl-6"><span className="text-secondary">stack</span><span className="text-on-surface">: [</span></p>
-                      <p className="pl-12"><span className="text-green-500 light:text-green-700">"React"</span><span className="text-on-surface">, </span><span className="text-green-500 light:text-green-700">"Spring Boot"</span><span className="text-on-surface">,</span></p>
-                      <p className="pl-12"><span className="text-green-500 light:text-green-700">"Angular"</span><span className="text-on-surface">, </span><span className="text-green-500 light:text-green-700">"Laravel"</span></p>
+                      <p className="pl-12"><span className="text-green-400 dark:text-green-400">"React"</span><span className="text-on-surface">, </span><span className="text-green-400 dark:text-green-400">"Spring Boot"</span><span className="text-on-surface">,</span></p>
+                      <p className="pl-12"><span className="text-green-400 dark:text-green-400">"Angular"</span><span className="text-on-surface">, </span><span className="text-green-400 dark:text-green-400">"Laravel"</span></p>
                       <p className="pl-6"><span className="text-on-surface">],</span></p>
-                      <p className="pl-6"><span className="text-secondary">available</span><span className="text-on-surface">: </span><span className="text-orange-500 light:text-orange-700">true</span></p>
+                      <p className="pl-6"><span className="text-secondary">available</span><span className="text-on-surface">: </span><span className="text-orange-400 dark:text-orange-400">true</span></p>
                       <p><span className="text-on-surface">{'}'}</span></p>
-                      <p className="mt-3 text-outline/60 light:text-outline/50">{'// Currently building awesome things'}</p>
+                      <p className="mt-3 text-muted/70">{'// Currently building awesome things'}</p>
                       <div className="flex items-center gap-1 mt-1">
                         <span className="text-outline/60">{'> '}</span>
                         <span className="w-2 h-5 bg-primary/70 animate-pulse" />

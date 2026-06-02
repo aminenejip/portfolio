@@ -23,7 +23,7 @@ export default function Footer() {
   ]
 
   return (
-    <footer className="relative z-10 border-t border-white/5 bg-[rgba(7,13,31,0.6)] backdrop-blur-md">
+    <footer className="relative z-10 border-t border-[var(--card-border)] bg-[var(--bg)] backdrop-blur-md">
       <div className="section-container py-12">
         <div className="grid md:grid-cols-3 gap-10 items-center">
           {/* Brand */}
@@ -34,7 +34,7 @@ export default function Footer() {
             viewport={{ once: true }}
             className="space-y-2"
           >
-            <span className="font-sora font-extrabold text-xl text-white">
+            <span className="font-sora font-extrabold text-xl text-on-surface">
               DevTerminal<span className="text-primary">.</span>
             </span>
             <p className="font-mono text-[10px] text-outline uppercase tracking-[0.2em]">
@@ -89,12 +89,12 @@ export default function Footer() {
         </div>
 
         {/* Bottom bar */}
-        <div className="mt-10 pt-6 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4">
-          <p className="font-mono text-[10px] text-outline/60 uppercase tracking-widest">
+        <div className="mt-10 pt-6 border-t border-[var(--card-border)] flex flex-col md:flex-row justify-between items-center gap-4">
+          <p className="font-mono text-[10px] text-muted uppercase tracking-widest">
             © {year} Amine Neji — All rights reserved
           </p>
-          <p className="font-mono text-[10px] text-outline/60 flex items-center gap-1.5">
-            Built with <Heart size={10} className="text-primary/60" /> React + Tailwind + Framer Motion
+          <p className="font-mono text-[10px] text-muted flex items-center gap-1.5">
+            Built with <Heart size={10} className="text-primary/70" /> React + Tailwind + Framer Motion
           </p>
         </div>
       </div>
