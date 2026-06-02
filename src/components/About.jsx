@@ -15,7 +15,7 @@ export default function About() {
   }
 
   return (
-    <section id="about" className="relative section-padding z-10">
+    <section id="about" className="relative section-spacing z-10">
       <div className="section-container">
         <div className="grid md:grid-cols-2 gap-16 lg:gap-24 items-center" ref={ref}>
           {/* Profile card */}

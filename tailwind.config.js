@@ -31,7 +31,7 @@ export default {
         'surface-bright': '#f9f9ff',
         'on-surface': {
           DEFAULT: '#0f172a',
-          dark: '#dce1fb',
+          dark: '#e2e8f0',
           light: '#0f172a',
         },
         'on-surface-variant': {
@@ -41,7 +41,7 @@ export default {
         },
         outline: {
           DEFAULT: '#cbd5e1',
-          dark: '#8c909f',
+          dark: '#94a3b8',
           light: '#cbd5e1',
         },
         'outline-variant': {

@@ -85,7 +85,7 @@ export default function Projects() {
   const [headerRef, headerInView] = useInView(0.2)
 
   return (
-    <section id="projects" className="relative section-padding z-10">
+    <section id="projects" className="relative section-spacing z-10">
       {/* Background accent */}
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-surface-container-lowest/20 to-transparent pointer-events-none dark:via-surface-container-lowest/20" />
 

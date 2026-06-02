@@ -12,7 +12,7 @@ export default function WorkProcess() {
   const [ref, inView] = useInView(0.1)
 
   return (
-    <section id="process" className="relative section-padding z-10 overflow-hidden">
+    <section id="process" className="relative section-spacing z-10 overflow-hidden">
       <div className="section-container" ref={ref}>
         {/* Header */}
         <motion.div

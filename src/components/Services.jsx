@@ -30,7 +30,7 @@ export default function Services() {
   const [ref, inView] = useInView(0.1)
 
   return (
-    <section id="services" className="relative section-padding z-10 bg-[var(--bg-secondary)]">
+    <section id="services" className="relative section-spacing z-10 bg-[var(--bg-secondary)]">
       <div className="section-container" ref={ref}>
         {/* Header */}
         <motion.div

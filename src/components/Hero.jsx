@@ -98,7 +98,7 @@ export default function Hero() {
       <ParticleCanvas />
       <section
         id="hero"
-        className="relative min-h-screen flex items-center pt-28 pb-20 z-10 overflow-hidden"
+        className="relative min-h-screen flex items-center pt-28 z-10 overflow-hidden hero-section"
       >
         {/* Glow spheres */}
         <div

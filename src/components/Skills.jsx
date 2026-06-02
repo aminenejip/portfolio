@@ -27,7 +27,7 @@ export default function Skills() {
   const [ref, inView] = useInView(0.1)
 
   return (
-    <section id="skills" className="relative section-padding z-10">
+    <section id="skills" className="relative z-10 skills-section">
       <div className="section-container" ref={ref}>
         {/* Header */}
         <motion.div

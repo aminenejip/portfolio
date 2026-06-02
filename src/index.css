@@ -26,6 +26,8 @@
   --code-bg: #0f172a;
   --code-bar: #1e293b;
   --code-border: rgba(15, 23, 42, 0.06);
+  --contact-label: #0f172a;
+  --contact-value: #334155;
   --gradient-hero: radial-gradient(circle at 20% 50%, rgba(59, 130, 246, 0.06) 0%, transparent 50%), radial-gradient(circle at 80% 20%, rgba(139, 92, 246, 0.06) 0%, transparent 50%);
   --gradient-section: linear-gradient(180deg, transparent 0%, rgba(59, 130, 246, 0.02) 50%, transparent 100%);
 }
@@ -54,8 +56,37 @@ html.dark {
   --code-bg: #0a0f20;
   --code-bar: #0d1528;
   --code-border: rgba(255, 255, 255, 0.05);
+  --contact-label: #e2e8f0;
+  --contact-value: #cbd5e1;
   --gradient-hero: radial-gradient(circle at 20% 50%, rgba(59, 130, 246, 0.08) 0%, transparent 50%), radial-gradient(circle at 80% 20%, rgba(139, 92, 246, 0.06) 0%, transparent 50%);
   --gradient-section: linear-gradient(180deg, transparent 0%, rgba(59, 130, 246, 0.03) 50%, transparent 100%);
+}
+
+@layer utilities {
+  .text-on-surface {
+    color: #0f172a;
+  }
+  .text-on-surface-variant {
+    color: #475569;
+  }
+  .text-muted {
+    color: #475569;
+  }
+  .text-outline {
+    color: #cbd5e1;
+  }
+  .dark .text-on-surface {
+    color: #e2e8f0;
+  }
+  .dark .text-on-surface-variant {
+    color: #94a3b8;
+  }
+  .dark .text-muted {
+    color: #94a3b8;
+  }
+  .dark .text-outline {
+    color: #94a3b8;
+  }
 }
 
 @layer base {
@@ -268,5 +299,51 @@ body::after {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+}
+
+.section-spacing {
+  padding-top: clamp(3.5rem, 6vw, 6rem);
+  padding-bottom: clamp(3.5rem, 6vw, 6rem);
+  position: relative;
+  z-index: 1;
+}
+
+.hero-section {
+  padding-bottom: clamp(5rem, 10vw, 9rem);
+}
+
+.skills-section,
+.toolkit-section {
+  margin-top: clamp(2rem, 4vw, 3.5rem);
+}
+
+.contact-card {
+  gap: 1.25rem;
+  padding: 1.5rem;
+  border-radius: 1.5rem;
+  position: relative;
+  z-index: 2;
+}
+
+.contact-card-label {
+  color: var(--contact-label);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.contact-card-value,
+.contact-card-value span,
+.contact-card a {
+  color: var(--contact-value);
+  opacity: 1;
+  text-decoration: none;
+  word-break: break-word;
+  transition: color 0.25s ease;
+}
+
+.contact-card:hover .contact-card-value,
+.contact-card:hover .contact-card a {
+  color: var(--accent);
 }
 
