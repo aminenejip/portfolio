@@ -191,6 +191,8 @@ html.dark {
     background-repeat: no-repeat;
     background-size: 100% 0.16em;
     background-position: 0 92%;
+    box-decoration-break: clone;
+    -webkit-box-decoration-break: clone;
   }
   html.dark .mark-t {
     background-image: linear-gradient(90deg, var(--hl-teal) 0%, var(--hl-lilac) 55%, var(--hl-amber) 100%);
