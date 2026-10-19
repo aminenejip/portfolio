@@ -27,8 +27,8 @@ export default function Contact() {
     <section id="contact" className="gradient-bg py-20 sm:py-24 lg:py-28" aria-labelledby="contact-title">
       <div className="mx-auto max-w-3xl px-5 text-center sm:px-8">
         <Reveal>
-          <p className="text-sm font-semibold uppercase tracking-widest text-link">{kicker}</p>
-          <h2 id="contact-title" className="mt-2 text-4xl font-black tracking-tight sm:text-5xl lg:text-6xl">
+          <p className="kicker text-link">{kicker}</p>
+          <h2 id="contact-title" className="heading-section mt-2 text-[clamp(2.25rem,4.5vw,3.75rem)]">
             {title}
           </h2>
           <p className="mx-auto mt-4 max-w-xl text-base text-muted sm:text-lg">{subtitle}</p>
@@ -41,7 +41,7 @@ export default function Contact() {
               href={gmailComposeUrl}
               target="_blank"
               rel="noreferrer noopener"
-              className="mt-8 inline-flex items-center gap-2.5 rounded-2xl bg-accent px-7 py-4 text-base font-semibold text-white shadow-card transition-colors hover:bg-accent-hover sm:text-lg"
+              className="mt-8 inline-flex items-center gap-2.5 rounded-[20px] bg-accent px-7 py-4 text-base font-semibold text-accent-fg shadow-card transition-colors hover:bg-accent-hover sm:text-lg"
             >
               <Mail size={20} aria-hidden />
               Email me on Gmail

@@ -64,9 +64,9 @@ function encodePNG(raw, width, height) {
 /* ---------- drawing ---------- */
 const px = Buffer.alloc(W * H * 4);
 
-const bgA = [15, 20, 40]; // top-left tone
-const bgB = [6, 9, 22]; // bottom-right tone
-const glow = [79, 70, 229]; // indigo accent
+const bgA = [16, 18, 20]; // top-left tone
+const bgB = [6, 7, 9]; // bottom-right tone
+const glow = [13, 148, 136]; // teal accent (#0D9488)
 const glowX = W * 0.72;
 const glowY = H * 0.28;
 
@@ -100,7 +100,7 @@ const GLYPHS = {
 const SCALE = 32; // dot pitch
 const GAP = 34;
 const INK = [244, 246, 255];
-const SUB = [129, 140, 248]; // indigo-300 accent bar
+const SUB = [94, 234, 212]; // teal-300 accent bar
 
 /** filled circular dot centered in (x0,y0) */
 function drawDot(cx0, cy0, r, color) {

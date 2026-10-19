@@ -32,11 +32,10 @@ export const profile = {
   /** Email — provided by Amine. Contact buttons open a Gmail compose window directly. */
   email: "aminenejip@gmail.com",
   /** Portrait file (used by src/components/Hero.jsx).
-   *  PREFERRED: drop the photo at  src/assets/profile-photo.jpg|jpeg|png|webp
-   *             → bundled + optimized by Vite, auto-detected, no config.
-   *  ALTERNATIVE: set photo to an existing /public path WITH extension, e.g. "/assets/photo-profile.jpg".
-   *  If neither file exists yet, the hero shows the marked initials tile — never a broken image. */
-  photo: null,
+   *  CURRENT: your photo at public/photo_profile.png (path below points to it).
+   *  To swap it later, replace that file or drop a new one at
+   *  src/assets/profile-photo.jpg|jpeg|png|webp (auto-detected, bundled+optimized). */
+  photo: "/photo_profile.png",
   /** Floating hero badge — real fact, edit any time. */
   availabilityBadge: "Open to internships & PFE",
 };

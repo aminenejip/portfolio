@@ -18,8 +18,8 @@ export default function About() {
       <div className="mx-auto max-w-6xl px-5 sm:px-8">
         {/* Heading */}
         <Reveal className="max-w-2xl">
-          <p className="text-sm font-semibold uppercase tracking-widest text-link">{kicker}</p>
-          <h2 id="about-title" className="mt-2 text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl">
+          <p className="kicker text-link">{kicker}</p>
+          <h2 id="about-title" className="heading-section mt-2 text-[clamp(1.875rem,3.5vw,2.5rem)]">
             {title}
           </h2>
           <p className="mt-3 text-base text-muted sm:text-lg">{subtitle}</p>
@@ -41,7 +41,7 @@ export default function About() {
             return (
               <Reveal as="li" key={group.id} delay={0.08 + i * 0.06}>
                 <div className="card interactive-lift h-full p-5 sm:p-6">
-                  <span className="grid size-11 place-items-center rounded-xl bg-accent-soft text-accent">
+                  <span className="grid size-11 place-items-center rounded-xl bg-accent-soft text-link">
                     <Icon size={22} aria-hidden />
                   </span>
                   <h3 className="mt-4 text-lg font-semibold text-content">{group.title}</h3>

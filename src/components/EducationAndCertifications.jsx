@@ -21,8 +21,8 @@ export default function EducationAndCertifications() {
       <div className="mx-auto max-w-6xl px-5 sm:px-8">
         {/* Heading */}
         <Reveal className="max-w-2xl">
-          <p className="text-sm font-semibold uppercase tracking-widest text-link">{kicker}</p>
-          <h2 id="education-title" className="mt-2 text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl">
+          <p className="kicker text-link">{kicker}</p>
+          <h2 id="education-title" className="heading-section mt-2 text-[clamp(1.875rem,3.5vw,2.5rem)]">
             {title}
           </h2>
           <p className="mt-3 text-base text-muted sm:text-lg">{subtitle}</p>
@@ -32,7 +32,7 @@ export default function EducationAndCertifications() {
           {/* ------------------------------------------------- Education timeline */}
           <Reveal delay={0.06}>
             <h3 className="flex items-center gap-2.5 text-xl font-semibold text-content">
-              <span className="grid size-9 place-items-center rounded-xl bg-accent-soft text-accent">
+              <span className="grid size-9 place-items-center rounded-xl bg-accent-soft text-link">
                 <GraduationCap size={19} aria-hidden />
               </span>
               Education
@@ -48,11 +48,11 @@ export default function EducationAndCertifications() {
                       {/* animated dot for in-progress, solid dot for completed */}
                       {inProgress ? (
                         <span className="absolute -left-[36.5px] top-1 flex size-[13px] sm:-left-[43px]">
-                          <span className="absolute inline-flex size-full animate-ping rounded-full bg-accent opacity-50 motion-reduce:hidden [animation-duration:1.8s]" />
-                          <span className="relative inline-flex size-[13px] rounded-full bg-accent ring-4 ring-bg" />
+                          <span className="absolute inline-flex size-full animate-ping rounded-full bg-hl-deep opacity-50 motion-reduce:hidden [animation-duration:1.8s]" />
+                          <span className="relative inline-flex size-[13px] rounded-full bg-hl-deep ring-4 ring-bg" />
                         </span>
                       ) : (
-                        <span className="absolute -left-[36.5px] top-1 inline-flex size-[13px] rounded-full border-2 border-accent bg-surface ring-4 ring-bg sm:-left-[43px]" />
+                        <span className="absolute -left-[36.5px] top-1 inline-flex size-[13px] rounded-full border-2 border-hl-deep bg-surface ring-4 ring-bg sm:-left-[43px]" />
                       )}
 
                       <div className="card p-5 sm:p-6">
@@ -60,8 +60,8 @@ export default function EducationAndCertifications() {
                           {inProgress ? (
                             <span className="inline-flex items-center gap-1.5 rounded-full bg-accent-soft px-2.5 py-1 text-xs font-semibold text-accent">
                               <span className="relative flex size-1.5">
-                                <span className="absolute inline-flex size-full animate-ping rounded-full bg-accent opacity-60 motion-reduce:hidden [animation-duration:1.8s]" />
-                                <span className="relative inline-flex size-1.5 rounded-full bg-accent" />
+                                <span className="absolute inline-flex size-full animate-ping rounded-full bg-hl-deep opacity-60 motion-reduce:hidden [animation-duration:1.8s]" />
+                                <span className="relative inline-flex size-1.5 rounded-full bg-hl-deep" />
                               </span>
                               In progress
                             </span>
@@ -92,7 +92,7 @@ export default function EducationAndCertifications() {
           {/* ------------------------------------------------- Certifications */}
           <Reveal delay={0.12}>
             <h3 className="flex items-center gap-2.5 text-xl font-semibold text-content">
-              <span className="grid size-9 place-items-center rounded-xl bg-accent-soft text-accent">
+              <span className="grid size-9 place-items-center rounded-xl bg-accent-soft text-link">
                 <Award size={19} aria-hidden />
               </span>
               Certifications
@@ -118,7 +118,7 @@ export default function EducationAndCertifications() {
                             Completed {cert.date}
                           </span>
                         </div>
-                        <span className="grid size-10 shrink-0 place-items-center rounded-xl bg-accent-soft text-accent">
+                        <span className="grid size-10 shrink-0 place-items-center rounded-xl bg-accent-soft text-link">
                           <Award size={18} aria-hidden />
                         </span>
                       </div>

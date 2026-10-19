@@ -23,7 +23,7 @@ export default function Footer() {
         {/* Brand */}
         <div className="md:justify-self-start">
           <a href="#home" className="inline-flex items-center gap-2.5" aria-label={`${profile.name} — back to top`}>
-            <span className="grid size-9 place-items-center rounded-xl bg-accent text-sm font-bold text-white">
+            <span className="grid size-9 place-items-center rounded-xl bg-accent text-sm font-bold text-accent-fg">
               {profile.initials}
             </span>
             <span className="text-sm font-semibold text-content">{profile.name}</span>

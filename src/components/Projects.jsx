@@ -40,11 +40,18 @@ const formatDate = (iso) => {
 
 const topicsOf = (p) => (Array.isArray(p.topics) ? p.topics.map((t) => String(t).toLowerCase()) : []);
 
-/** deterministic decorative gradient for repos without a screenshot */
+/** deterministic tile gradients from the accent palette (teal / lilac / amber / blue) */
+const TILE_GRADIENTS = [
+  ["#14b8a6", "#115e59"], // teal
+  ["#a78bfa", "#6d28d9"], // lilac
+  ["#fbbf24", "#b45309"], // amber
+  ["#60a5fa", "#1e40af"], // blue
+];
 const gradientFor = (seed) => {
   let h = 0;
-  for (const ch of seed) h = (h * 31 + ch.charCodeAt(0)) % 360;
-  return `linear-gradient(135deg, hsl(${h} 60% 52%), hsl(${(h + 45) % 360} 70% 38%))`;
+  for (const ch of seed) h = (h * 31 + ch.charCodeAt(0)) % TILE_GRADIENTS.length;
+  const [a, b] = TILE_GRADIENTS[h];
+  return `linear-gradient(135deg, ${a}, ${b})`;
 };
 
 export default function Projects() {
@@ -70,8 +77,8 @@ export default function Projects() {
       <div className="mx-auto max-w-6xl px-5 sm:px-8">
         {/* Heading */}
         <Reveal className="max-w-2xl">
-          <p className="text-sm font-semibold uppercase tracking-widest text-link">{kicker}</p>
-          <h2 id="projects-title" className="mt-2 text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl">
+          <p className="kicker text-link">{kicker}</p>
+          <h2 id="projects-title" className="heading-section mt-2 text-[clamp(1.875rem,3.5vw,2.5rem)]">
             {title}
           </h2>
           <p className="mt-3 text-base text-muted sm:text-lg">{subtitle}</p>
@@ -90,13 +97,13 @@ export default function Projects() {
                   onClick={() => setActive(f.key)}
                   className={`inline-flex items-center gap-1.5 rounded-full px-4 py-2 text-sm font-medium transition-colors ${
                     isActive
-                      ? "bg-accent text-white"
+                      ? "bg-accent text-accent-fg"
                       : "border border-borderline bg-surface text-muted hover:bg-surface-2 hover:text-content"
                   }`}
                 >
                   {f.label}
                   <span
-                    className={`text-xs font-semibold ${isActive ? "text-white/80" : "text-muted/70"}`}
+                    className={`text-xs font-semibold ${isActive ? "text-accent-fg/80" : "text-muted/70"}`}
                   >
                     {countFor(f.key)}
                   </span>

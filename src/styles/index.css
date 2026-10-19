@@ -1,55 +1,80 @@
-/* @fontsource-variable/inter — self-hosted Inter (no external font requests) */
-@import "@fontsource-variable/inter";
+/* @fontsource-variable/plus-jakarta-sans — self-hosted display font (no external requests) */
+@import "@fontsource-variable/plus-jakarta-sans";
 @import "tailwindcss";
 
 /* ============================================================
-   Design tokens — light & dark live entirely in CSS variables.
-   Contrast checked: text/muted ≥ 4.5:1 on their backgrounds.
+   DESIGN SYSTEM — applied from `desgin system.md` (alpha tokens):
+   frosted glass, layered micro-elevation, ink accent + curated
+   accent trio (teal / lilac / amber), Plus Jakarta Sans.
+   Light & dark live entirely in CSS variables.
+   Contrast fix (flagged in the system notes): light muted text
+   would have failed 1.11:1 — replaced by a readable dark slate-teal.
    ============================================================ */
 :root {
   color-scheme: light;
 
   /* surfaces & text */
-  --bg: #f8fafc;            /* page background        */
-  --surface: #ffffff;       /* cards / navbar         */
-  --surface-2: #f1f5f9;     /* subtle insets          */
-  --text: #0f172a;          /* primary text (#0F172A on white ≈ 16:1) */
-  --muted: #475569;         /* secondary text (slate-600, ≈ 7.5:1 on white) */
-  --border: #e2e8f0;
+  --bg: #f0f4f7;                  /* canvas */
+  --surface: rgba(255, 255, 255, 0.72);   /* frosted overlay layer */
+  --surface-2: rgba(224, 228, 231, 0.6);  /* raised tint */
+  --text: #071416;                /* ink */
+  --muted: #3c535a;               /* ≈ 8.5:1 on canvas (system spec value failed; fixed) */
+  --border: #dae0e7;              /* hairline */
+  --card-border: rgba(255, 255, 255, 0.72); /* semi-transparent card borders */
 
-  /* accent — indigo (our single accent color) */
-  --accent: #4f46e5;        /* indigo-600, white text on it ≈ 6.3:1 */
-  --accent-hover: #4338ca;
-  --accent-soft: #eef2ff;   /* tinted chip / badge background */
-  --link: #4f46e5;          /* link color on light bg */
+  /* accent — ink solid + curated trio for decorations */
+  --accent: #0f172a;              /* primary button bg */
+  --accent-hover: #1d2941;
+  --accent-fg: #ffffff;           /* text on accent (light mode) */
+  --accent-soft: rgba(13, 148, 136, 0.1);
+  --link: #0d5f59;                /* teal-800-ish, ≈ 6.4:1 on canvas */
+  --focus: #0f172a;
 
-  --shadow-card: 0 1px 2px rgb(15 23 42 / 0.04), 0 12px 28px -8px rgb(15 23 42 / 0.1);
-  --glow-a: #c7d2fe;        /* decorative gradient stops (light) */
-  --glow-b: #e0e7ff;
+  /* decorative gradient stops */
+  --hl-teal: #5eead4;
+  --hl-lilac: #d8b4fe;
+  --hl-amber: #fcd34d;
+  --hl-deep: #0d9488;
+
+  /* layered micro-elevation (from the system's measured shadows) */
+  --shadow-card:
+    0 14px 40px rgba(15, 40, 45, 0.06),
+    0 2px 8px rgba(15, 40, 45, 0.03),
+    inset 0 1px 0 rgba(255, 255, 255, 0.95),
+    inset 1px 0 0 rgba(255, 255, 255, 0.4);
 }
 
 html.dark {
   color-scheme: dark;
 
-  --bg: #0b1120;
-  --surface: #111b2e;
-  --surface-2: #17233a;
-  --text: #e6ecf5;          /* ≈ 13:1 on --bg */
-  --muted: #9fb0c7;         /* ≈ 6.5:1 on --bg */
-  --border: #243149;
+  --bg: #0d0f11;
+  --surface: rgba(28, 29, 31, 0.82);      /* #1C1D1F frosted */
+  --surface-2: #28292b;
+  --text: #f5f6f6;
+  --muted: #9d9e9f;                       /* ≈ 5.6:1 on #0D0F11 */
+  --border: #343537;
+  --card-border: rgba(255, 255, 255, 0.1);
 
-  --accent: #6366f1;        /* buttons keep white text; contrast is handled per-token */
-  --accent-hover: #747af1;
-  --accent-soft: rgba(99, 102, 241, 0.14);
-  --link: #a5b4fc;
+  --accent: #6683c8;                      /* dark-mode button */
+  --accent-hover: #7b95d6;
+  --accent-fg: #0b0b0c;                   /* near-black text on the blue */
+  --accent-soft: rgba(102, 131, 200, 0.14);
+  --link: #5eead4;
+  --focus: #3f61b1;
 
-  --shadow-card: 0 1px 2px rgb(0 0 0 / 0.4), 0 12px 28px -8px rgb(0 0 0 / 0.5);
-  --glow-a: #312e81;
-  --glow-b: #1e1b4b;
+  --hl-teal: #2dd4bf;
+  --hl-lilac: #d8b4fe;
+  --hl-amber: #fcd34d;
+  --hl-deep: #14b8a6;
+
+  --shadow-card:
+    0 14px 40px rgba(0, 0, 0, 0.5),
+    0 2px 8px rgba(0, 0, 0, 0.35),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05);
 }
 
 @theme inline {
-  --font-sans: "Inter Variable", "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-sans: "Plus Jakarta Sans Variable", "Plus Jakarta Sans", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
 
   --color-bg: var(--bg);
   --color-surface: var(--surface);
@@ -57,10 +82,16 @@ html.dark {
   --color-content: var(--text);      /* text-content */
   --color-muted: var(--muted);       /* text-muted   */
   --color-borderline: var(--border); /* border-borderline */
+  --color-card-border: var(--card-border);
   --color-accent: var(--accent);     /* bg-accent / text-accent */
   --color-accent-hover: var(--accent-hover);
+  --color-accent-fg: var(--accent-fg);
   --color-accent-soft: var(--accent-soft);
   --color-link: var(--link);         /* text-link */
+  --color-hl-teal: var(--hl-teal);
+  --color-hl-lilac: var(--hl-lilac);
+  --color-hl-amber: var(--hl-amber);
+  --color-hl-deep: var(--hl-deep);
 
   --shadow-card: var(--shadow-card);
 }
@@ -89,19 +120,19 @@ html.dark {
   }
 
   :focus-visible {
-    outline: 2px solid var(--accent);
+    outline: 2px solid var(--focus);
     outline-offset: 2px;
-    border-radius: 4px;
+    border-radius: 9px;
   }
 
   ::selection {
-    background: var(--accent);
-    color: #ffffff;
+    background: rgba(13, 148, 136, 0.28);
+    color: var(--text);
   }
 
   /* Skip link — visible only when keyboard-focused */
   .skip-link {
-    @apply fixed left-4 top-4 z-[60] -translate-y-20 rounded-xl bg-accent px-4 py-2 text-sm font-semibold text-white shadow-card transition-transform;
+    @apply fixed left-4 top-4 z-[60] -translate-y-20 rounded-xl bg-accent px-4 py-2 text-sm font-semibold text-accent-fg shadow-card transition-transform;
   }
   .skip-link:focus-visible {
     @apply translate-y-0;
@@ -112,8 +143,9 @@ html.dark {
    Shared utilities / patterns
    ============================================================ */
 @layer components {
+  /* frosted glass card — layered overlay + hairline + micro elevation */
   .card {
-    @apply rounded-2xl border border-borderline bg-surface shadow-card;
+    @apply rounded-3xl border border-card-border bg-surface shadow-card backdrop-blur-md;
   }
 
   .soft-shadow {
@@ -136,12 +168,49 @@ html.dark {
     }
   }
 
-  /* Hero decorative background: two soft radial accent glows */
+  /* Hero / contact decorative background.
+     Light: canvas + accent trio glows + measured white lift to 92%.
+     Dark: near-black canvas with teal + lilac glows. */
   .gradient-bg {
     background:
-      radial-gradient(42rem 28rem at 85% -10%, var(--glow-a) 0%, transparent 60%),
-      radial-gradient(38rem 26rem at -10% 30%, var(--glow-b) 0%, transparent 55%),
+      radial-gradient(38rem 26rem at 72% 4%, rgba(13, 148, 136, 0.08) 0%, transparent 55%),
+      radial-gradient(30rem 22rem at 6% 55%, rgba(216, 180, 254, 0.12) 0%, transparent 55%),
+      linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.45) 50%, rgba(255, 255, 255, 0.9) 92%),
       var(--bg);
+  }
+  html.dark .gradient-bg {
+    background:
+      radial-gradient(38rem 26rem at 72% 2%, rgba(13, 148, 136, 0.16) 0%, transparent 55%),
+      radial-gradient(30rem 22rem at 4% 55%, rgba(216, 180, 254, 0.09) 0%, transparent 55%),
+      var(--bg);
+  }
+
+  /* Gradient "highlighter" under the hero role words (accent trio) */
+  .mark-t {
+    background-image: linear-gradient(90deg, rgba(13, 148, 136, 0.22) 0%, rgba(216, 180, 254, 0.28) 55%, rgba(252, 211, 77, 0.24) 100%);
+    border-radius: 0.3rem;
+    box-decoration-break: clone;
+    -webkit-box-decoration-break: clone;
+    padding: 0 0.25em;
+  }
+  html.dark .mark-t {
+    background-image: linear-gradient(90deg, rgba(45, 212, 191, 0.2) 0%, rgba(216, 180, 254, 0.16) 55%, rgba(252, 211, 77, 0.14) 100%);
+  }
+
+  /* Display type scale (measured: 76px/-2.9px @900 on 1440 → 40px on 375) */
+  .display-hero {
+    font-weight: 900;
+    letter-spacing: -0.038em;
+    line-height: 0.96;
+  }
+  .heading-section {
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    line-height: 1.15;
+  }
+  .kicker {
+    @apply text-[10px] font-black uppercase;
+    letter-spacing: 2px;
   }
 }
 

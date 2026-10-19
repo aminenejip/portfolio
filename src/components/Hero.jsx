@@ -65,10 +65,10 @@ export default function Hero() {
             initial={reduceMotion ? { opacity: 0 } : { opacity: 0, y: 18 }}
             animate={reduceMotion ? { opacity: 1 } : { opacity: 1, y: 0 }}
             transition={reduceMotion ? { duration: 0.3 } : { duration: 0.6, ease: "easeOut" }}
-            className="mt-4 text-balance text-5xl font-black leading-[1.02] tracking-tight sm:text-6xl lg:text-7xl"
+            className="mt-4 text-balance display-hero text-[clamp(2.5rem,7vw,4.75rem)]"
           >
             {profile.name},{" "}
-            <span className="bg-gradient-to-r from-accent to-link bg-clip-text text-transparent">
+            <span className="mark-t">
               Full-Stack Developer
             </span>
           </motion.h1>
@@ -83,14 +83,14 @@ export default function Hero() {
           <Reveal delay={0.14} className="mt-7 flex flex-wrap items-center gap-3">
             <a
               href="#projects"
-              className="inline-flex items-center gap-2 rounded-2xl bg-accent px-6 py-3.5 text-sm font-semibold text-white shadow-card transition-colors hover:bg-accent-hover sm:text-base"
+              className="inline-flex items-center gap-2 rounded-[20px] bg-accent px-7 py-3.5 text-sm font-semibold text-accent-fg shadow-card transition-colors hover:bg-accent-hover sm:text-base"
             >
               Explore My Work
               <ArrowDown size={18} aria-hidden />
             </a>
             <a
               href="#contact"
-              className="inline-flex items-center gap-2 rounded-2xl border border-borderline bg-surface px-6 py-3.5 text-sm font-semibold text-content transition-colors hover:bg-surface-2 sm:text-base"
+              className="inline-flex items-center gap-2 rounded-[20px] border border-card-border bg-surface px-7 py-3.5 text-sm font-semibold text-content shadow-card backdrop-blur-md transition-colors hover:bg-[rgba(0,186,167,0.22)] sm:text-base"
             >
               Let&apos;s Connect
             </a>
@@ -168,8 +168,8 @@ export default function Hero() {
             {/* Floating badge */}
             <div className="card absolute -bottom-5 left-4 flex items-center gap-2.5 px-4 py-3 sm:-left-5">
               <span className="relative flex size-2.5">
-                <span className="absolute inline-flex size-full animate-ping rounded-full bg-accent opacity-60 motion-reduce:hidden [animation-duration:1.6s]" />
-                <span className="relative inline-flex size-2.5 rounded-full bg-accent" />
+                <span className="absolute inline-flex size-full animate-ping rounded-full bg-hl-deep opacity-60 motion-reduce:hidden [animation-duration:1.6s]" />
+                <span className="relative inline-flex size-2.5 rounded-full bg-hl-deep" />
               </span>
               <span className="text-xs font-semibold text-content sm:text-sm">
                 {profile.availabilityBadge}

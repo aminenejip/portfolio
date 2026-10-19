@@ -36,10 +36,10 @@ export default function Navbar() {
     <header className="fixed inset-x-0 top-3 z-50 sm:top-4">
       <nav
         aria-label="Main navigation"
-        className={`mx-auto flex w-[calc(100%-1.5rem)] max-w-3xl items-center justify-between gap-2 rounded-2xl border px-3 py-2 backdrop-blur-md transition-colors sm:px-4 ${
+            className={`mx-auto flex w-[calc(100%-1.5rem)] max-w-3xl items-center justify-between gap-2 rounded-[18px] border px-3 py-2 backdrop-blur-md transition-colors sm:px-4 ${
           scrolled || open
-            ? "border-borderline bg-surface/90 shadow-card"
-            : "border-transparent bg-surface/60"
+            ? "border-card-border bg-surface shadow-card"
+            : "border-transparent bg-surface/70"
         }`}
       >
         {/* Logo / initials */}
@@ -56,13 +56,13 @@ export default function Navbar() {
           </span>
         </a>
 
-        {/* Desktop anchor links — real <a href="#id"> */}
-        <ul className="hidden items-center gap-1 md:flex">
+        {/* Desktop anchor links — real <a href="#id"> (visible from 1024px, per system breakpoints) */}
+        <ul className="hidden items-center gap-1 lg:flex">
           {navLinks.map((link) => (
             <li key={link.href}>
               <a
                 href={link.href}
-                className="rounded-lg px-3 py-2 text-sm font-medium text-muted transition-colors hover:bg-surface-2 hover:text-content"
+                className="rounded-lg px-3 py-2 text-[13px] font-medium text-muted transition-colors hover:bg-surface-2 hover:text-content"
               >
                 {link.label}
               </a>
@@ -76,10 +76,10 @@ export default function Navbar() {
 
           <a
             href="#contact"
-            className="hidden items-center gap-1 rounded-xl bg-accent px-4 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-accent-hover md:inline-flex"
+            className="hidden items-center gap-1 rounded-[16px] bg-accent px-4 py-2.5 text-[13px] font-semibold text-accent-fg shadow-card transition-colors hover:bg-accent-hover lg:inline-flex"
           >
             Let&apos;s Connect
-            <ArrowUpRight size={16} aria-hidden />
+            <ArrowUpRight size={15} aria-hidden />
           </a>
 
           <button
@@ -88,7 +88,7 @@ export default function Navbar() {
             aria-expanded={open}
             aria-controls="mobile-menu"
             aria-label={open ? "Close menu" : "Open menu"}
-            className="grid size-10 place-items-center rounded-xl border border-borderline bg-surface text-content transition-colors hover:bg-surface-2 md:hidden"
+            className="grid size-10 place-items-center rounded-xl border border-card-border bg-surface text-content transition-colors hover:bg-surface-2 lg:hidden"
           >
             {open ? <X size={20} aria-hidden /> : <Menu size={20} aria-hidden />}
           </button>
@@ -105,7 +105,7 @@ export default function Navbar() {
             exit={reduceMotion ? { opacity: 0 } : { opacity: 0, y: -8, scaleY: 0.96 }}
             transition={{ duration: 0.18, ease: "easeOut", ...common }}
             style={{ transformOrigin: "top center" }}
-            className="mx-auto mt-2 w-[calc(100%-1.5rem)] max-w-3xl overflow-hidden rounded-2xl border border-borderline bg-surface/95 p-2 shadow-card backdrop-blur-md md:hidden"
+            className="mx-auto mt-2 w-[calc(100%-1.5rem)] max-w-3xl overflow-hidden rounded-[20px] border border-card-border bg-surface/95 p-2 shadow-card backdrop-blur-md lg:hidden"
           >
             <ul className="flex flex-col">
               {navLinks.map((link) => (
@@ -123,7 +123,7 @@ export default function Navbar() {
             <a
               href="#contact"
               onClick={() => setOpen(false)}
-              className="mt-1 flex items-center justify-center gap-1 rounded-xl bg-accent px-4 py-3 text-sm font-semibold text-white transition-colors hover:bg-accent-hover"
+              className="mt-1 flex items-center justify-center gap-1 rounded-[16px] bg-accent px-4 py-3 text-sm font-semibold text-accent-fg transition-colors hover:bg-accent-hover"
             >
               Let&apos;s Connect
               <ArrowUpRight size={16} aria-hidden />
