@@ -5,6 +5,7 @@
   "type": "module",
   "description": "Portfolio of Amine Neji — Full-Stack Developer, Master's student in Networking & Cloud Computing (Tunis, Tunisia)",
   "scripts": {
+    "prebuild": "node scripts/fetch-github.mjs",
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview"
