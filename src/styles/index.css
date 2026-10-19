@@ -120,6 +120,22 @@ html.dark {
     box-shadow: var(--shadow-card);
   }
 
+  /* Hover lift for cards — respects reduced motion */
+  .interactive-lift {
+    transition:
+      transform 0.25s ease,
+      box-shadow 0.25s ease,
+      border-color 0.25s ease;
+  }
+  .interactive-lift:hover {
+    transform: translateY(-4px);
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .interactive-lift:hover {
+      transform: none;
+    }
+  }
+
   /* Hero decorative background: two soft radial accent glows */
   .gradient-bg {
     background:
