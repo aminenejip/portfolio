@@ -22,7 +22,7 @@ export default function Footer() {
       <div className="mx-auto grid max-w-6xl grid-cols-1 gap-8 px-5 py-10 text-center sm:px-8 md:grid-cols-[1fr_auto_1fr] md:items-center md:text-left">
         {/* Brand */}
         <div className="md:justify-self-start">
-          <a href="#home" className="inline-flex items-center gap-2.5" aria-label={`${profile.initials} ${profile.name}, back to top`}>
+          <a href="#home" className="inline-flex items-center gap-2.5" title="Back to top">
             <span className="grid size-9 place-items-center rounded-xl bg-accent text-sm font-bold text-accent-fg">
               {profile.initials}
             </span>

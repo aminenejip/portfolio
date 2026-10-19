@@ -46,7 +46,7 @@ export default function Navbar() {
         <a
           href="#home"
           className="flex items-center gap-2.5"
-          aria-label={`${profile.initials} ${profile.name}, back to top`}
+          title="Back to top"
         >
           <span className="grid size-9 shrink-0 place-items-center rounded-xl bg-accent text-sm font-bold text-accent-fg">
             {profile.initials}
