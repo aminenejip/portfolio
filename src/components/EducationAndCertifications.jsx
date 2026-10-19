@@ -58,7 +58,7 @@ export default function EducationAndCertifications() {
                       <div className="card p-5 sm:p-6">
                         <div className="flex flex-wrap items-center gap-2">
                           {inProgress ? (
-                            <span className="inline-flex items-center gap-1.5 rounded-full bg-accent-soft px-2.5 py-1 text-xs font-semibold text-accent">
+                            <span className="inline-flex items-center gap-1.5 rounded-full bg-accent-soft px-2.5 py-1 text-xs font-semibold text-link">
                               <span className="relative flex size-1.5">
                                 <span className="absolute inline-flex size-full animate-ping rounded-full bg-hl-deep opacity-60 motion-reduce:hidden [animation-duration:1.8s]" />
                                 <span className="relative inline-flex size-1.5 rounded-full bg-hl-deep" />
