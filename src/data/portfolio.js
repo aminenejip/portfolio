@@ -183,3 +183,43 @@ export const sectionCopy = {
 export const site = {
   url: "https://amineneji-portfolio.example.com",
 };
+
+/* ------------------------------------------------------------------
+ * PROJECT FILTER CHIPS — topics are mapped to 3 categories (All/Web/Cloud/Networking).
+ * A project can appear in several categories if several of its topics match.
+ * Extend freely — real GitHub topics only.
+ * ------------------------------------------------------------------ */
+export const topicFilters = [
+  {
+    key: "all",
+    label: "All",
+    topics: "*", // matches everything
+  },
+  {
+    key: "web",
+    label: "Web",
+    topics: [
+      "web", "website", "webapp", "web-app", "web-application", "frontend",
+      "react", "reactjs", "vue", "angular", "nextjs", "svelte", "html", "css",
+      "javascript", "typescript", "redux", "vite", "tailwind", "tailwindcss",
+      "portfolio", "web-development",
+    ],
+  },
+  {
+    key: "cloud",
+    label: "Cloud",
+    topics: [
+      "cloud", "devops", "docker", "kubernetes", "k8s", "aws", "azure", "gcp",
+      "ci-cd", "github-actions", "terraform", "deployment", "serverless",
+      "cloud-computing",
+    ],
+  },
+  {
+    key: "networking",
+    label: "Networking",
+    topics: [
+      "networking", "network", "tcp", "dns", "subnetting", "vlan", "routing",
+      "firewall", "cisco", "packettracer", "packet-tracer", "ccna",
+    ],
+  },
+];

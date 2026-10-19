@@ -1,6 +1,7 @@
 import Navbar from "./components/Navbar.jsx";
 import Hero from "./components/Hero.jsx";
 import About from "./components/About.jsx";
+import Projects from "./components/Projects.jsx";
 
 /**
  * App shell.
@@ -20,7 +21,7 @@ export default function App() {
       <main id="main">
         <Hero />
         <About />
-        <Stub id="projects" label="Projects (Featured Work)" />
+        <Projects />
         <Stub id="education" label="Education & Certifications" />
         <Stub id="contact" label="Contact" />
       </main>
