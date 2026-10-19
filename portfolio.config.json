@@ -1,3 +1,7 @@
 {
-  "include": ["aminenejip/portfolio"]
+  "include": [
+    "aminenejip/portfolio",
+    "aminenejip/backpain-alert-widget",
+    "aminenejip/Orchom-Suivi-du-jeu-Rami"
+  ]
 }

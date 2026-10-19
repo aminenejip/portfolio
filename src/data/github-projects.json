@@ -1,5 +1,23 @@
 [
   {
+    "name": "backpain-alert-widget",
+    "language": "TeX",
+    "topics": [],
+    "private": false,
+    "html_url": "https://github.com/aminenejip/backpain-alert-widget",
+    "updated_at": "2026-07-23T10:18:24Z",
+    "stargazers_count": 0
+  },
+  {
+    "name": "Orchom-Suivi-du-jeu-Rami",
+    "language": "Dart",
+    "topics": [],
+    "private": false,
+    "html_url": "https://github.com/aminenejip/Orchom-Suivi-du-jeu-Rami",
+    "updated_at": "2026-10-18T21:33:21Z",
+    "stargazers_count": 0
+  },
+  {
     "name": "portfolio",
     "description": "portfolio",
     "topics": [
