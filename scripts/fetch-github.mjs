@@ -126,7 +126,7 @@ const isHttpUrl = (v) => typeof v === "string" && /^https?:\/\//i.test(v.trim())
 async function main() {
   const token = process.env.GH_TOKEN;
   if (!token) {
-    warn("GH_TOKEN not set (e.g. `npx cross-env`-free: GH_TOKEN=… npm run build). Keeping the existing github-projects.json.");
+    warn('GH_TOKEN not set — keeping the existing github-projects.json. The script activates automatically once GH_TOKEN exists (local env or Actions secret).');
     return 0; // deliberate exit 0: builds stay green without a token
   }
 
