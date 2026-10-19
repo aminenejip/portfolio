@@ -3,12 +3,12 @@ import Hero from "./components/Hero.jsx";
 import About from "./components/About.jsx";
 import Projects from "./components/Projects.jsx";
 import EducationAndCertifications from "./components/EducationAndCertifications.jsx";
+import Contact from "./components/Contact.jsx";
 
 /**
  * App shell.
  * Section order (fixed): Hero(Home) → About → Projects → Education → Contact.
- * Remaining sections are added one at a time; the stubs below keep anchor
- * navigation working until each real component replaces them.
+ * Footer is the last remaining component.
  */
 export default function App() {
   return (
@@ -24,22 +24,8 @@ export default function App() {
         <About />
         <Projects />
         <EducationAndCertifications />
-        <Stub id="contact" label="Contact" />
+        <Contact />
       </main>
     </>
-  );
-}
-
-function Stub({ id, label }) {
-  return (
-    <section
-      id={id}
-      aria-label={label}
-      className="flex min-h-[60vh] items-center justify-center border-b border-dashed border-borderline/60"
-    >
-      <p className="text-sm text-muted">
-        [STUB] {label} — built in an upcoming step
-      </p>
-    </section>
   );
 }

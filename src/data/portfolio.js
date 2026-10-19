@@ -177,6 +177,12 @@ export const sectionCopy = {
     title: "Degrees and certified coursework",
     subtitle: "Formal computer science training, ongoing networking & cloud specialization.",
   },
+  contact: {
+    kicker: "Contact",
+    title: "Let's connect",
+    subtitle:
+      "Internship, PFE, junior role, freelance project or a question — my inbox is always open.",
+  },
 };
 
 /** TODO [PLACEHOLDER]: final deployed site URL — used by the SEO step (sitemap, canonical) */
