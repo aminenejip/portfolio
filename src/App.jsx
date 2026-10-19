@@ -1,9 +1,10 @@
 import Navbar from "./components/Navbar.jsx";
+import Hero from "./components/Hero.jsx";
 
 /**
  * App shell.
  * Section order (fixed): Hero(Home) → About → Projects → Education → Contact.
- * Section components are added one at a time; the stubs below keep anchor
+ * Remaining sections are added one at a time; the stubs below keep anchor
  * navigation working until each real component replaces them.
  */
 export default function App() {
@@ -16,7 +17,7 @@ export default function App() {
       <Navbar />
 
       <main id="main">
-        <Stub id="home" label="Hero (Home)" />
+        <Hero />
         <Stub id="about" label="About" />
         <Stub id="projects" label="Projects (Featured Work)" />
         <Stub id="education" label="Education & Certifications" />

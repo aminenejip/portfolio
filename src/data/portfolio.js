@@ -29,13 +29,16 @@ export const profile = {
     "Master's student in Networking & Cloud Computing with a Computer Science bachelor's degree, building full-stack web projects alongside my studies. Currently looking for my next opportunity.",
   aboutParagraph:
     "I am a Master's student in Networking and Cloud Computing, and I hold a Bachelor's degree in Computer Science. Understanding what happens under the hood — networks, servers, infrastructure — helps me build web applications that are not just functional, but solid. I complement that systems knowledge with day-to-day full-stack practice: turning ideas into working interfaces, APIs and deployments.",
-  /** TODO [PLACEHOLDER]: add your email, then Hero/Contact "email me" buttons open a Gmail compose window. */
-  email: "[TODO: your email — e.g. amine.neji@example.com]",
-  /** CV must exist at this path: put your PDF in public/ (already expected as /cv-amine-neji.pdf) */
-  cv: "/cv-amine-neji.pdf",
-  /** TODO [PLACEHOLDER]: drop your photo in public/ (e.g. /profile-photo.jpg) and put the path here.
-   *  While null, the hero shows a stylized initials tile instead. */
+  /** Email — provided by Amine. Contact buttons open a Gmail compose window directly. */
+  email: "aminenejip@gmail.com",
+  /** Portrait file (used by src/components/Hero.jsx).
+   *  PREFERRED: drop the photo at  src/assets/profile-photo.jpg|jpeg|png|webp
+   *             → bundled + optimized by Vite, auto-detected, no config.
+   *  ALTERNATIVE: set photo to an existing /public path WITH extension, e.g. "/assets/photo-profile.jpg".
+   *  If neither file exists yet, the hero shows the marked initials tile — never a broken image. */
   photo: null,
+  /** Floating hero badge — real fact, edit any time. */
+  availabilityBadge: "Open to internships & PFE",
 };
 
 /* ------------------------------------------------------------------
