@@ -1,0 +1,29 @@
+# Dependencies (never commit)
+node_modules/
+
+# Build output
+dist/
+dist-ssr/
+
+# Env files — secrets must never be committed (GH_TOKEN usage is build-time/server-side only)
+.env
+.env.local
+.env.*.local
+!.env.example
+
+# Editor / OS
+.vscode/*
+!.vscode/extensions.json
+.idea/
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*

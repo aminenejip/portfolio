@@ -1,0 +1,141 @@
+/* @fontsource-variable/inter — self-hosted Inter (no external font requests) */
+@import "@fontsource-variable/inter";
+@import "tailwindcss";
+
+/* ============================================================
+   Design tokens — light & dark live entirely in CSS variables.
+   Contrast checked: text/muted ≥ 4.5:1 on their backgrounds.
+   ============================================================ */
+:root {
+  color-scheme: light;
+
+  /* surfaces & text */
+  --bg: #f8fafc;            /* page background        */
+  --surface: #ffffff;       /* cards / navbar         */
+  --surface-2: #f1f5f9;     /* subtle insets          */
+  --text: #0f172a;          /* primary text (#0F172A on white ≈ 16:1) */
+  --muted: #475569;         /* secondary text (slate-600, ≈ 7.5:1 on white) */
+  --border: #e2e8f0;
+
+  /* accent — indigo (our single accent color) */
+  --accent: #4f46e5;        /* indigo-600, white text on it ≈ 6.3:1 */
+  --accent-hover: #4338ca;
+  --accent-soft: #eef2ff;   /* tinted chip / badge background */
+  --link: #4f46e5;          /* link color on light bg */
+
+  --shadow-card: 0 1px 2px rgb(15 23 42 / 0.04), 0 12px 28px -8px rgb(15 23 42 / 0.1);
+  --glow-a: #c7d2fe;        /* decorative gradient stops (light) */
+  --glow-b: #e0e7ff;
+}
+
+html.dark {
+  color-scheme: dark;
+
+  --bg: #0b1120;
+  --surface: #111b2e;
+  --surface-2: #17233a;
+  --text: #e6ecf5;          /* ≈ 13:1 on --bg */
+  --muted: #9fb0c7;         /* ≈ 6.5:1 on --bg */
+  --border: #243149;
+
+  --accent: #6366f1;        /* buttons keep white text; contrast is handled per-token */
+  --accent-hover: #747af1;
+  --accent-soft: rgba(99, 102, 241, 0.14);
+  --link: #a5b4fc;
+
+  --shadow-card: 0 1px 2px rgb(0 0 0 / 0.4), 0 12px 28px -8px rgb(0 0 0 / 0.5);
+  --glow-a: #312e81;
+  --glow-b: #1e1b4b;
+}
+
+@theme inline {
+  --font-sans: "Inter Variable", "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-content: var(--text);      /* text-content */
+  --color-muted: var(--muted);       /* text-muted   */
+  --color-borderline: var(--border); /* border-borderline */
+  --color-accent: var(--accent);     /* bg-accent / text-accent */
+  --color-accent-hover: var(--accent-hover);
+  --color-accent-soft: var(--accent-soft);
+  --color-link: var(--link);         /* text-link */
+
+  --shadow-card: var(--shadow-card);
+}
+
+/* ============================================================
+   Base
+   ============================================================ */
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+  }
+
+  body {
+    @apply bg-bg text-content font-sans antialiased;
+  }
+
+  /* anchor targets clear the fixed navbar */
+  section[id],
+  article[id] {
+    scroll-margin-top: 5.5rem;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+
+  ::selection {
+    background: var(--accent);
+    color: #ffffff;
+  }
+
+  /* Skip link — visible only when keyboard-focused */
+  .skip-link {
+    @apply fixed left-4 top-4 z-[60] -translate-y-20 rounded-xl bg-accent px-4 py-2 text-sm font-semibold text-white shadow-card transition-transform;
+  }
+  .skip-link:focus-visible {
+    @apply translate-y-0;
+  }
+}
+
+/* ============================================================
+   Shared utilities / patterns
+   ============================================================ */
+@layer components {
+  .card {
+    @apply rounded-2xl border border-borderline bg-surface shadow-card;
+  }
+
+  .soft-shadow {
+    box-shadow: var(--shadow-card);
+  }
+
+  /* Hero decorative background: two soft radial accent glows */
+  .gradient-bg {
+    background:
+      radial-gradient(42rem 28rem at 85% -10%, var(--glow-a) 0%, transparent 60%),
+      radial-gradient(38rem 26rem at -10% 30%, var(--glow-b) 0%, transparent 55%),
+      var(--bg);
+  }
+}
+
+/* If the OS asks for reduced motion, kill CSS transitions wholesale too */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Apply saved/system theme before first paint (prevents light flash) -->
+    <script>
+      try {
+        var t = localStorage.getItem("theme");
+        if (
+          t === "dark" ||
+          (t !== "light" && window.matchMedia("(prefers-color-scheme: dark)").matches)
+        ) {
+          document.documentElement.classList.add("dark");
+        }
+      } catch (e) {}
+    </script>
+
+    <!-- ===================== SEO ===================== -->
+    <!-- TODO [PLACEHOLDER]: replace https://amineneji-portfolio.example.com with your deployed URL
+         (canonical, og:url, JSON-LD url, sitemap.xml and robots.txt must all use the same domain) -->
+    <title>Amine Neji, Full-Stack Developer</title>
+    <meta
+      name="description"
+      content="Portfolio of Amine Neji — Full-Stack Developer and Master's student in Networking & Cloud Computing, based in Tunis, Tunisia. Open to internships, PFE, junior roles, freelance and remote work."
+    />
+    <meta name="author" content="Amine Neji" />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://amineneji-portfolio.example.com/" />
+
+    <!-- Theme colors are handled via CSS variables; svg icon for modern browsers -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    <!-- ===================== Open Graph ===================== -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Amine Neji — Portfolio" />
+    <meta property="og:title" content="Amine Neji, Full-Stack Developer" />
+    <meta
+      property="og:description"
+      content="Full-Stack Developer & Master's student in Networking and Cloud Computing, Tunis, Tunisia."
+    />
+    <meta property="og:url" content="https://amineneji-portfolio.example.com/" />
+    <!-- TODO [PLACEHOLDER]: og-image.png (1200x630) is generated in a later step — replace file when you have a real one -->
+    <meta property="og:image" content="https://amineneji-portfolio.example.com/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:locale" content="en_US" />
+
+    <!-- ===================== Twitter ===================== -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Amine Neji, Full-Stack Developer" />
+    <meta
+      name="twitter:description"
+      content="Full-Stack Developer & Master's student in Networking and Cloud Computing, Tunis, Tunisia."
+    />
+    <meta name="twitter:image" content="https://amineneji-portfolio.example.com/og-image.png" />
+
+    <!-- ===================== JSON-LD Person ===================== -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Amine Neji",
+        "url": "https://amineneji-portfolio.example.com/",
+        "jobTitle": "Full-Stack Developer",
+        "description": "Full-Stack Developer and Master's student in Networking and Cloud Computing.",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Tunis",
+          "addressCountry": "TN"
+        },
+        "sameAs": ["https://github.com/aminenejip"],
+        "knowsAbout": ["Web Development", "Networking", "Cloud Computing"]
+      }
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>
