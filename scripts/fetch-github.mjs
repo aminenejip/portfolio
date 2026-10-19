@@ -1,8 +1,9 @@
 /**
  * scripts/fetch-github.mjs — build-time GitHub data pipeline (Node 20+, zero dependencies).
  *
- *  1. Reads GH_TOKEN from process.env ONLY — never from VITE_ vars, never imported in
- *     src/, never exposed to the client bundle.
+ *  1. Reads GH_TOKEN from process.env (Actions secret / shell env) or from the
+ *     gitignored `.env.local` file at the project root — never from VITE_ vars,
+ *     never imported in src/, never exposed to the client bundle.
  *  2. GET /user/repos?per_page=100&affiliation=owner (public + private), paginated.
  *  3. Keeps ONLY repos carrying the "portfolio" topic; skips forks and archived repos.
  *  4. Extracts name/description/language/topics/homepage/html_url/private/updated_at/stars.
@@ -123,10 +124,28 @@ async function fetchScreenshot(token, fullName, repoName, defaultBranch) {
 
 const isHttpUrl = (v) => typeof v === "string" && /^https?:\/\//i.test(v.trim());
 
+/**
+ * Reads a GH_TOKEN from ROOT/.env.local as a local-only convenience
+ * (so you never have to paste the token into a chat or terminal history).
+ * The file is gitignored and the value is never logged or written anywhere.
+ */
+async function readLocalToken() {
+  try {
+    const raw = await readFile(join(ROOT, ".env.local"), "utf8");
+    for (const line of raw.split(/\r?\n/)) {
+      const m = line.match(/^\s*GH_TOKEN\s*=\s*("?)([^\s"]+)\1\s*$/);
+      if (m) return m[2].trim();
+    }
+  } catch {
+    /* file absent — fine */
+  }
+  return null;
+}
+
 async function main() {
-  const token = process.env.GH_TOKEN;
+  const token = process.env.GH_TOKEN || (await readLocalToken());
   if (!token) {
-    warn('GH_TOKEN not set — keeping the existing github-projects.json. The script activates automatically once GH_TOKEN exists (local env or Actions secret).');
+    warn('GH_TOKEN not set — keeping the existing github-projects.json. Add it via env var, .env.local (GH_TOKEN=...), or the Actions secret.');
     return 0; // deliberate exit 0: builds stay green without a token
   }
 

@@ -36,7 +36,7 @@ export default function Navbar() {
     <header className="fixed inset-x-0 top-3 z-50 sm:top-4">
       <nav
         aria-label="Main navigation"
-            className={`mx-auto flex w-[calc(100%-1.5rem)] max-w-3xl items-center justify-between gap-2 rounded-[18px] border px-3 py-2 backdrop-blur-md transition-colors sm:px-4 ${
+        className={`mx-auto flex w-fit max-w-full items-center gap-2.5 rounded-[18px] border px-3 py-2 backdrop-blur-md transition-colors sm:px-4 ${
           scrolled || open
             ? "border-card-border bg-surface shadow-card"
             : "border-transparent bg-surface/70"
@@ -105,7 +105,7 @@ export default function Navbar() {
             exit={reduceMotion ? { opacity: 0 } : { opacity: 0, y: -8, scaleY: 0.96 }}
             transition={{ duration: 0.18, ease: "easeOut", ...common }}
             style={{ transformOrigin: "top center" }}
-            className="mx-auto mt-2 w-[calc(100%-1.5rem)] max-w-3xl overflow-hidden rounded-[20px] border border-card-border bg-surface/95 p-2 shadow-card backdrop-blur-md lg:hidden"
+            className="mx-auto mt-2 w-64 overflow-hidden rounded-[20px] border border-card-border bg-surface/95 p-2 shadow-card backdrop-blur-md lg:hidden"
           >
             <ul className="flex flex-col">
               {navLinks.map((link) => (
