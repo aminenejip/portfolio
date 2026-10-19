@@ -22,6 +22,7 @@
 import { writeFile, mkdir, readFile } from "node:fs/promises";
 import { fileURLToPath } from "node:url";
 import { dirname, join } from "node:path";
+import https from "node:https";
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..");
 const OUT_JSON = join(ROOT, "src", "data", "github-projects.json");
@@ -45,27 +46,67 @@ const rawHeaders = (token, ref) => ({
   ...(ref ? { ref } : {}),
 });
 
-async function ghFetch(url, token, expectJson) {
-  const res = await fetch(url, {
-    headers: expectJson ? jsonHeaders(token) : rawHeaders(token),
-    signal: AbortSignal.timeout(20_000),
+/**
+ * Minimal GET over node:https (non-keep-alive: each socket is closed as soon
+ * as its response ends, so nothing is left pending at process exit — avoids
+ * the Windows libuv teardown assertion that global `fetch`/undici triggers).
+ */
+function request(url, headers) {
+  return new Promise((resolve, reject) => {
+    const u = new URL(url);
+    const req = https.request(
+      {
+        hostname: u.hostname,
+        path: u.pathname + u.search,
+        method: "GET",
+        headers,
+        timeout: 20_000,
+      },
+      (res) => {
+        const chunks = [];
+        res.on("data", (c) => chunks.push(c));
+        res.on("end", () =>
+          resolve({
+            status: res.statusCode,
+            statusText: res.statusMessage || "",
+            body: Buffer.concat(chunks),
+          }),
+        );
+      },
+    );
+    req.on("timeout", () => req.destroy(new Error("timeout after 20s")));
+    req.on("error", reject);
+    req.end();
   });
-  if (!res.ok) {
-    const err = new Error(`${res.status} ${res.statusText} — ${url}`);
-    err.status = res.status;
+}
+
+async function getJson(url, token) {
+  const r = await request(url, jsonHeaders(token));
+  if (r.status >= 300) {
+    const err = new Error(`${r.status} ${r.statusText} — ${url}`);
+    err.status = r.status;
     throw err;
   }
-  return expectJson ? res.json() : res;
+  return JSON.parse(r.body.toString("utf8"));
+}
+
+async function getRaw(url, token) {
+  const r = await request(url, rawHeaders(token));
+  if (r.status >= 300) {
+    const err = new Error(`${r.status} ${r.statusText} — ${url}`);
+    err.status = r.status;
+    throw err;
+  }
+  return r.body;
 }
 
 /** fetch all owned repos, paginated */
 async function fetchAllOwnedRepos(token) {
   const all = [];
   for (let page = 1; page <= 10; page++) {
-    const batch = await ghFetch(
+    const batch = await getJson(
       `${API}/user/repos?per_page=100&page=${page}&affiliation=owner`,
       token,
-      true,
     );
     all.push(...batch);
     if (batch.length < 100) break;
@@ -90,12 +131,7 @@ async function fetchOverrides(token, fullName, defaultBranch) {
 }
 
 async function resText(url, token) {
-  const res = await fetch(url, {
-    headers: rawHeaders(token),
-    signal: AbortSignal.timeout(20_000),
-  });
-  if (!res.ok) throw new Error(`${res.status} ${res.statusText}`);
-  return res.text();
+  return (await getRaw(url, token)).toString("utf8");
 }
 
 /* download public-repo screenshot → public/projects/<repo>.<ext> */
@@ -104,11 +140,8 @@ async function fetchScreenshot(token, fullName, repoName, defaultBranch) {
   const base = `${API}/repos/${fullName}/contents/docs/`;
   for (const name of SHOT_NAMES) {
     try {
-      const blob = await (await fetch(base + name, {
-        headers: rawHeaders(token, defaultBranch),
-        signal: AbortSignal.timeout(20_000),
-      })).arrayBuffer();
-      if (blob.byteLength === 0) continue;
+      const blob = await getRaw(base + name, token);
+      if (blob.length === 0) continue;
       const ext = SHOT_EXT[name.split(".").pop()];
       const file = join(OUT_IMG_DIR, `${repoName}.${ext}`);
       await mkdir(OUT_IMG_DIR, { recursive: true });
