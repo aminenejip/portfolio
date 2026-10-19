@@ -23,6 +23,7 @@ import { writeFile, mkdir, readFile } from "node:fs/promises";
 import { fileURLToPath } from "node:url";
 import { dirname, join } from "node:path";
 import https from "node:https";
+import { coverForEntry } from "./generate-covers.mjs";
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..");
 const OUT_JSON = join(ROOT, "src", "data", "github-projects.json");
@@ -267,6 +268,18 @@ async function main() {
   }
 
   /* ------------------------------------------------ write out */
+  /* decorative cover for entries with no real screenshot
+     (priority: portfolio.json override > docs/screenshot.* > cover) */
+  for (const entry of entries) {
+    if (entry.screenshot) continue;
+    try {
+      entry.screenshot = await coverForEntry(entry);
+      log(`cover: ${entry.name} → ${entry.screenshot}`);
+    } catch (err) {
+      warn(`cover generation failed for ${entry.name}: ${err.message}`);
+    }
+  }
+
   await mkdir(dirname(OUT_JSON), { recursive: true });
   await writeFile(OUT_JSON, JSON.stringify(entries, null, 2) + "\n");
   log(`✓ wrote ${entries.length} project(s) → ${OUT_JSON}`);

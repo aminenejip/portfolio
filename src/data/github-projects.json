@@ -6,7 +6,8 @@
     "private": false,
     "html_url": "https://github.com/aminenejip/backpain-alert-widget",
     "updated_at": "2026-07-23T10:18:24Z",
-    "stargazers_count": 0
+    "stargazers_count": 0,
+    "screenshot": "/projects/backpain-alert-widget.png"
   },
   {
     "name": "Orchom-Suivi-du-jeu-Rami",
@@ -15,7 +16,8 @@
     "private": false,
     "html_url": "https://github.com/aminenejip/Orchom-Suivi-du-jeu-Rami",
     "updated_at": "2026-10-18T21:33:21Z",
-    "stargazers_count": 0
+    "stargazers_count": 0,
+    "screenshot": "/projects/Orchom-Suivi-du-jeu-Rami.png"
   },
   {
     "name": "portfolio",
@@ -26,6 +28,7 @@
     "private": false,
     "html_url": "https://github.com/aminenejip/portfolio",
     "updated_at": "2026-10-19T21:09:24Z",
-    "stargazers_count": 0
+    "stargazers_count": 0,
+    "screenshot": "/projects/portfolio.png"
   }
 ]
