@@ -185,17 +185,16 @@ html.dark {
       var(--bg);
   }
 
-  /* Gradient underline under the hero role words (accent trio) */
+  /* Gradient underline under the hero role words (accent trio).
+     inline-block keeps each word a self-contained box: a crisp thin
+     gradient bar at its bottom edge, immune to line-break slicing. */
   .mark-t {
+    display: inline-block;
+    padding-bottom: 0.1em;
     background-image: linear-gradient(90deg, var(--hl-deep) 0%, var(--hl-lilac) 55%, var(--hl-amber) 100%);
     background-repeat: no-repeat;
-    background-size: 100% 0.16em;
-    background-position: 0 92%;
-    box-decoration-break: clone;
-    -webkit-box-decoration-break: clone;
-  }
-  html.dark .mark-t {
-    background-image: linear-gradient(90deg, var(--hl-teal) 0%, var(--hl-lilac) 55%, var(--hl-amber) 100%);
+    background-size: 100% 0.14em;
+    background-position: 100% 100%;
   }
 
   /* Display type scale (measured: 76px/-2.9px @900 on 1440 → 40px on 375) */

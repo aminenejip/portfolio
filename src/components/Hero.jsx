@@ -68,9 +68,8 @@ export default function Hero() {
             className="mt-4 text-balance display-hero text-[clamp(2.5rem,7vw,4.75rem)]"
           >
             {profile.name},{" "}
-            <span className="mark-t">
-              Full-Stack Developer
-            </span>
+            <span className="mark-t">Full-Stack</span>{" "}
+            <span className="mark-t">Developer</span>
           </motion.h1>
 
           <Reveal delay={0.08}>
