@@ -199,10 +199,22 @@ async function main() {
     return 0;
   }
 
-  const selected = repos.filter(
-    (r) => !r.fork && !r.archived && Array.isArray(r.topics) && r.topics.includes(REQUIRED_TOPIC),
-  );
+  /* ------------------------------------------------ explicit include list
+     Repos named here are shown even without the "portfolio" topic
+     (still owned by you — this only widens the topic filter). */
+  let includeList = [];
+  try {
+    const cfg = JSON.parse(await readFile(join(ROOT, "portfolio.config.json"), "utf8"));
+    if (Array.isArray(cfg.include)) includeList = cfg.include.map((s) => String(s).trim().toLowerCase()).filter(Boolean);
+  } catch {
+    /* no portfolio.config.json — topic filter only */
+  }
+
+  const byTopic = (r) => !r.fork && !r.archived && Array.isArray(r.topics) && r.topics.includes(REQUIRED_TOPIC);
+  const byInclude = (r) => includeList.includes(r.full_name.toLowerCase());
+  const selected = repos.filter((r) => byTopic(r) || byInclude(r));
   log(`${selected.length} repo(s) tagged "${REQUIRED_TOPIC}" out of ${repos.length} owned.`);
+  if (includeList.length) log(`(+ explicit include list from portfolio.config.json: ${includeList.join(", ")})`);
 
   /* ------------------------------------------------ build entries */
   const entries = [];
