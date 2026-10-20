@@ -27,3 +27,9 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
+
+# One-off upload staging (images prepared for pushing to OTHER repos)
+upload-to-github/
+
+# Ad-hoc temp scripts
+scripts/tmp-*.mjs

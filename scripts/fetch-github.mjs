@@ -19,7 +19,7 @@
  *  FAILURE POLICY: any API/network error → the existing JSON is kept untouched and
  *  the script exits 0, so `npm run build` never breaks because of GitHub.
  */
-import { writeFile, mkdir, readFile } from "node:fs/promises";
+import { writeFile, mkdir, readFile, copyFile } from "node:fs/promises";
 import { fileURLToPath } from "node:url";
 import { dirname, join } from "node:path";
 import https from "node:https";
@@ -204,9 +204,15 @@ async function main() {
      Repos named here are shown even without the "portfolio" topic
      (still owned by you — this only widens the topic filter). */
   let includeList = [];
+  let stagedShots = {};
   try {
     const cfg = JSON.parse(await readFile(join(ROOT, "portfolio.config.json"), "utf8"));
     if (Array.isArray(cfg.include)) includeList = cfg.include.map((s) => String(s).trim().toLowerCase()).filter(Boolean);
+    if (cfg.screenshotsFiles && typeof cfg.screenshotsFiles === "object") {
+      for (const [k, v] of Object.entries(cfg.screenshotsFiles)) {
+        if (typeof v === "string") stagedShots[k.trim().toLowerCase()] = v.trim();
+      }
+    }
   } catch {
     /* no portfolio.config.json — topic filter only */
   }
@@ -257,6 +263,22 @@ async function main() {
         if (shot) base.screenshot = shot;
       } catch (err) {
         warn(`screenshot fetch failed for ${repo.name}: ${err.message}`);
+      }
+    }
+
+    /* locally staged image (upload-to-github/) — a stand-in until the repo
+       carries its own docs/screenshot, which takes priority above. */
+    if (!base.screenshot) {
+      const staged = stagedShots[fullName.toLowerCase()] ?? stagedShots[repo.name.toLowerCase()];
+      if (staged) {
+        try {
+          const ext = staged.split(".").pop().toLowerCase();
+          await copyFile(join(ROOT, staged), join(OUT_IMG_DIR, `${repo.name}.${ext}`));
+          base.screenshot = `/projects/${repo.name}.${ext}`;
+          log(`staged image: ${repo.name} ← ${staged}`);
+        } catch {
+          warn(`staged image missing for ${repo.name}: ${staged}`);
+        }
       }
     }
 

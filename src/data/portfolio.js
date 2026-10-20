@@ -4,10 +4,9 @@
  *  Components must only read from this file (plus
  *  src/data/github-projects.json, which is generated at build time).
  *
- *  HOW TO USE: replace every value marked like this —
- *      "[TODO: ...]"
- *  with the real information. Nothing here is invented; unknown
- *  facts stay placeholders until Amine provides them.
+ *  Remaining "[TODO: ...]" markers = information that exists
+ *  neither in the CV nor in the GitHub README (Master's university
+ *  and years). Nothing else is invented.
  * ============================================================
  */
 
@@ -22,29 +21,19 @@ export const profile = {
   shortRole: "Full-Stack Developer",
   headline:
     "Full-Stack Developer | Master's student in Networking & Cloud Computing",
-  location: "Tunis, Tunisia",
+  location: "Nabeul, Tunisia",
   openTo: ["Internship", "PFE", "Junior role", "Freelance", "Remote"],
-  /** Hero / About copy — short and honest, no invented metrics. */
   heroParagraph:
     "Master's student in Networking & Cloud Computing with a Computer Science bachelor's degree, building full-stack web projects alongside my studies. Currently looking for my next opportunity.",
   aboutParagraph:
-    "I am a Master's student in Networking and Cloud Computing, and I hold a Bachelor's degree in Computer Science. Understanding what happens under the hood — networks, servers, infrastructure — helps me build web applications that are not just functional, but solid. I complement that systems knowledge with day-to-day full-stack practice: turning ideas into working interfaces, APIs and deployments.",
-  /** Email — provided by Amine. Contact buttons open a Gmail compose window directly. */
+    "I am a Master's student in Networking and Cloud Computing, and I hold a Bachelor's degree in Computer Science from the Faculty of Sciences of Sfax. Understanding what happens under the hood — networks, servers, infrastructure — helps me build web applications that are not just functional, but solid. I complement that systems knowledge with day-to-day full-stack practice: turning ideas into working interfaces, APIs and deployments.",
   email: "aminenejip@gmail.com",
-  /** Portrait file (used by src/components/Hero.jsx).
-   *  CURRENT: your photo at public/photo_profile.png (path below points to it).
-   *  To swap it later, replace that file or drop a new one at
-   *  src/assets/profile-photo.jpg|jpeg|png|webp (auto-detected, bundled+optimized). */
   photo: "/photo_profile.png",
-  /** Floating hero badge — real fact, edit any time. */
   availabilityBadge: "Open to internships & PFE",
 };
 
 /* ------------------------------------------------------------------
  * HERO STATS — only real numbers.
- *  - "Projects featured" is computed from github-projects.json at runtime (no hardcode).
- *  - Degrees: Master's (in progress) + Bachelor's (completed)      -> 2
- *  - Open to roles listed above                                    -> 5
  * ------------------------------------------------------------------ */
 export const stats = [
   { id: "projects", label: "Featured projects", source: "github-count" },
@@ -53,42 +42,61 @@ export const stats = [
 ];
 
 /* ------------------------------------------------------------------
- * SKILLS — real skills only. Fill the `items` arrays; while an array
- * is empty the UI shows a discreet "to be filled" state.
+ * SKILLS — taken from the CV and the GitHub README.
  * ------------------------------------------------------------------ */
 export const skillGroups = [
   {
     id: "frontend",
     title: "Frontend",
-    icon: "layout", // key -> see components/About.jsx icon map
-    line: "[TODO: one short sentence about your frontend focus]",
-    items: [], // TODO: e.g. ["React", "Tailwind CSS", "JavaScript"]
+    icon: "layout",
+    line: "Building responsive interfaces with React and Angular.",
+    items: ["HTML5", "CSS3", "JavaScript", "React", "Angular"],
   },
   {
     id: "backend",
     title: "Backend",
     icon: "server",
-    line: "[TODO: one short sentence about your backend focus]",
-    items: [], // TODO: real backend skills only
+    line: "Server-side development and databases, from REST APIs to data modeling.",
+    items: [
+      "Node.js",
+      "Express.js",
+      "PHP",
+      "Python",
+      "Java",
+      "MySQL",
+      "MongoDB",
+    ],
   },
   {
     id: "cloud",
     title: "Cloud & DevOps",
     icon: "cloud",
-    line: "[TODO: one short sentence about your cloud focus]",
-    items: [], // TODO: real cloud/DevOps skills only
+    line: "Version control today, containers and cloud infrastructure in progress.",
+    items: ["Git", "GitHub"],
   },
   {
     id: "networking",
     title: "Networking",
     icon: "network",
-    line: "[TODO: one short sentence about your networking focus]",
-    items: [], // TODO: real networking skills only (e.g. subetting, VLANs, routing)
+    line: "Solid networking fundamentals through my Master's and Cisco coursework.",
+    items: [
+      "TCP/IP",
+      "IP addressing",
+      "VLAN fundamentals",
+      "Switching",
+      "Routing basics",
+    ],
   },
 ];
 
-/** "Currently learning" — real items only. */
-export const currentlyLearning = []; // TODO: only what you actually study right now
+/** "Currently learning" — from the GitHub README. */
+export const currentlyLearning = [
+  "Docker & containerization",
+  "CCNA 200-301 preparation",
+  "Linux & command-line tools",
+  "Cloud computing & infrastructure",
+  "Software architecture",
+];
 
 /* ------------------------------------------------------------------
  * EDUCATION — vertical timeline.
@@ -97,52 +105,72 @@ export const education = [
   {
     id: "master",
     degree: "Master's in Networking and Cloud Computing",
-    university: "[TODO: university name]",
-    years: "[TODO: start year] – [TODO: expected graduation year]",
-    status: "in-progress", // renders "In progress" + animated dot
-    focus: "[TODO: one line on focus areas, e.g. what you actually study]",
+    university: "Faculty of Sciences of Sfax",
+    years: "2026 – 2028",
+    status: "in-progress",
+    focus: "Networking, cloud computing and infrastructure.",
   },
   {
     id: "bachelor",
-    degree: "Bachelor's degree (Licence) in Computer Science",
-    university: "[TODO: university name]",
-    years: "[TODO: graduation year]",
+    degree: "Licence in Computer Science",
+    university: "Faculty of Sciences of Sfax",
+    years: "2023 – 2026",
     status: "completed",
-    focus: "[TODO: one line on focus areas]",
+    focus:
+      "Programming, data structures, algorithmic problem solving, databases, analysis and modeling.",
+  },
+   {
+    id: "bachelor",
+    degree: "Baccalauréat Informatique",
+    university: "Lycée Béni Khiar , nabeul ,tunisia",
+    years: "2022-2023",
+    status: "completed",
+    focus:
+      "Programming, data structures, algorithmic problem solving, databases, analysis and modeling.",
   },
 ];
 
 /* ------------------------------------------------------------------
- * CERTIFICATIONS — exact course/credential names, never invented ones.
- * IMPORTANT: CCNA 1 is a *course*, not the CCNA certification — always
- * keep the full course title, never shorten it to "CCNA" or claim the
- * certification exam was passed.
+ * CERTIFICATIONS — exact course/credential names.
+ * CCNA 1 is a *course*, not the CCNA certification.
  * ------------------------------------------------------------------ */
 export const certifications = [
   {
     id: "ccna1",
     issuer: "Cisco Networking Academy",
     title: "CCNA 1: Introduction to Networks",
-    date: "[TODO: completion year]",
-    /** Leave "" to hide the Verify button. Only add a real credential URL here. */
+    date: "2025",
+    credentialUrl: "",
+  },
+  {
+    id: "dart",
+    issuer: "Udemy",
+    title: "The Complete Dart Learning Guide",
+    date: "2024",
     credentialUrl: "",
   },
 ];
 
 /**
- * EXPERIENCE — none published yet. Leave empty; the site must not
- * invent positions, employers or dates.
+ * EXPERIENCE — from the CV.
  */
-export const experience = [];
+export const experience = [
+  {
+    id: "elite-council",
+    role: "IT Intern",
+    company: "Elite Council Consulting",
+    period: "September – December 2024",
+    description:
+      "Took part in an accounting analysis project and worked with the basics of Angular, Figma, Node.js and MongoDB, using GitHub and IntelliJ.",
+  },
+];
 
 /* ------------------------------------------------------------------
- * SOCIAL LINKS (components hide links whose value is "" / a TODO marker)
+ * SOCIAL LINKS
  * ------------------------------------------------------------------ */
 export const social = {
   github: "https://github.com/aminenejip",
-  /** TODO [PLACEHOLDER]: full LinkedIn profile URL */
-  linkedin: "[TODO: https://www.linkedin.com/in/your-handle]",
-  /** reuses profile.email */
+  linkedin: "https://www.linkedin.com/in/neji-amine-521942300/",
 };
 
 /* ------------------------------------------------------------------
@@ -157,7 +185,7 @@ export const navLinks = [
 ];
 
 /* ------------------------------------------------------------------
- * SECTION COPY — titles & subtitles for consistency across views
+ * SECTION COPY
  * ------------------------------------------------------------------ */
 export const sectionCopy = {
   projects: {
@@ -169,12 +197,14 @@ export const sectionCopy = {
   about: {
     kicker: "About",
     title: "Systems thinking, applied to the web",
-    subtitle: "Master's student in Networking & Cloud Computing — building full-stack web applications.",
+    subtitle:
+      "Master's student in Networking & Cloud Computing — building full-stack web applications.",
   },
   education: {
     kicker: "Education & Certifications",
     title: "Degrees and certified coursework",
-    subtitle: "Formal computer science training, ongoing networking & cloud specialization.",
+    subtitle:
+      "Formal computer science training, ongoing networking & cloud specialization.",
   },
   contact: {
     kicker: "Contact",
@@ -184,21 +214,19 @@ export const sectionCopy = {
   },
 };
 
-/** TODO [PLACEHOLDER]: final deployed site URL — used by the SEO step (sitemap, canonical) */
+/** Deployed site URL — used by the SEO step (sitemap, canonical) */
 export const site = {
-  url: "https://amineneji-portfolio.example.com",
+  url: "https://portfolio-phi-coral-99.vercel.app",
 };
 
 /* ------------------------------------------------------------------
- * PROJECT FILTER CHIPS — topics are mapped to 3 categories (All/Web/Cloud/Networking).
- * A project can appear in several categories if several of its topics match.
- * Extend freely — real GitHub topics only.
+ * PROJECT FILTER CHIPS
  * ------------------------------------------------------------------ */
 export const topicFilters = [
   {
     key: "all",
     label: "All",
-    topics: "*", // matches everything
+    topics: "*",
   },
   {
     key: "web",

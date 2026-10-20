@@ -167,8 +167,10 @@ export async function generateCover({ title, out, seed }) {
 
   const px = Buffer.alloc(W * H * 4);
   const set = (x, y, r, g, b) => {
-    if (x < 0 || x >= W || y < 0 || y >= H) return;
-    const i = (y * W + x) * 4;
+    const xi = Math.round(x);
+    const yi = Math.round(y);
+    if (xi < 0 || xi >= W || yi < 0 || yi >= H) return;
+    const i = (yi * W + xi) * 4;
     px[i] = r;
     px[i + 1] = g;
     px[i + 2] = b;
@@ -230,11 +232,12 @@ export async function generateCover({ title, out, seed }) {
     for (const ch of line) {
       if (ch !== " ") {
         const g = GLYPH(ch);
-        if (g)
+        if (g) {
           for (let ry = 0; ry < 7; ry++)
             for (let cx = 0; cx < 5; cx++)
               if (g[ry][cx] === "1")
                 drawDot(x0 + cx * SCALE + SCALE / 2, yy + ry * SCALE + SCALE / 2, SCALE * 0.38, INK);
+        }
       }
       x0 += (ch === " " ? 3 : 6) * SCALE;
     }
