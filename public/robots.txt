@@ -1,0 +1,7 @@
+# robots.txt
+# TODO [PLACEHOLDER]: replace the domain below with the final deployed URL (same as canonical in index.html)
+
+User-agent: *
+Allow: /
+
+Sitemap: https://amineneji-portfolio.example.com/sitemap.xml

@@ -1,0 +1,11 @@
+{
+  "include": [
+    "aminenejip/portfolio",
+    "aminenejip/backpain-alert-widget",
+    "aminenejip/Orchom-Suivi-du-jeu-Rami"
+  ],
+  "screenshotsFiles": {
+    "aminenejip/orchom-suivi-du-jeu-rami": "upload-to-github/orchom-screenshot.png",
+    "aminenejip/backpain-alert-widget": "upload-to-github/backpain-design-4.jpg"
+  }
+}

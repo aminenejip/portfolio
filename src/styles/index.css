@@ -1,0 +1,226 @@
+/* @fontsource-variable/plus-jakarta-sans — self-hosted display font (no external requests) */
+@import "@fontsource-variable/plus-jakarta-sans";
+@import "tailwindcss";
+
+/* ============================================================
+   DESIGN SYSTEM — applied from `desgin system.md` (alpha tokens):
+   frosted glass, layered micro-elevation, ink accent + curated
+   accent trio (teal / lilac / amber), Plus Jakarta Sans.
+   Light & dark live entirely in CSS variables.
+   Contrast fix (flagged in the system notes): light muted text
+   would have failed 1.11:1 — replaced by a readable dark slate-teal.
+   ============================================================ */
+:root {
+  color-scheme: light;
+
+  /* surfaces & text */
+  --bg: #f0f4f7;                  /* canvas */
+  --surface: rgba(255, 255, 255, 0.72);   /* frosted overlay layer */
+  --surface-2: rgba(224, 228, 231, 0.6);  /* raised tint */
+  --text: #071416;                /* ink */
+  --muted: #3c535a;               /* ≈ 8.5:1 on canvas (system spec value failed; fixed) */
+  --border: #dae0e7;              /* hairline */
+  --card-border: rgba(255, 255, 255, 0.72); /* semi-transparent card borders */
+
+  /* accent — ink solid + curated trio for decorations */
+  --accent: #0f172a;              /* primary button bg */
+  --accent-hover: #1d2941;
+  --accent-fg: #ffffff;           /* text on accent (light mode) */
+  --accent-soft: rgba(13, 148, 136, 0.1);
+  --link: #0d5f59;                /* teal-800-ish, ≈ 6.4:1 on canvas */
+  --focus: #0f172a;
+
+  /* decorative gradient stops */
+  --hl-teal: #5eead4;
+  --hl-lilac: #d8b4fe;
+  --hl-amber: #fcd34d;
+  --hl-deep: #0d9488;
+
+  /* layered micro-elevation (from the system's measured shadows) */
+  --shadow-card:
+    0 14px 40px rgba(15, 40, 45, 0.06),
+    0 2px 8px rgba(15, 40, 45, 0.03),
+    inset 0 1px 0 rgba(255, 255, 255, 0.95),
+    inset 1px 0 0 rgba(255, 255, 255, 0.4);
+}
+
+html.dark {
+  color-scheme: dark;
+
+  --bg: #0d0f11;
+  --surface: rgba(28, 29, 31, 0.82);      /* #1C1D1F frosted */
+  --surface-2: #28292b;
+  --text: #f5f6f6;
+  --muted: #9d9e9f;                       /* ≈ 5.6:1 on #0D0F11 */
+  --border: #343537;
+  --card-border: rgba(255, 255, 255, 0.1);
+
+  --accent: #6683c8;                      /* dark-mode button */
+  --accent-hover: #7b95d6;
+  --accent-fg: #0b0b0c;                   /* near-black text on the blue */
+  --accent-soft: rgba(102, 131, 200, 0.14);
+  --link: #5eead4;
+  --focus: #3f61b1;
+
+  --hl-teal: #2dd4bf;
+  --hl-lilac: #d8b4fe;
+  --hl-amber: #fcd34d;
+  --hl-deep: #14b8a6;
+
+  --shadow-card:
+    0 14px 40px rgba(0, 0, 0, 0.5),
+    0 2px 8px rgba(0, 0, 0, 0.35),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05);
+}
+
+@theme inline {
+  --font-sans: "Plus Jakarta Sans Variable", "Plus Jakarta Sans", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-content: var(--text);      /* text-content */
+  --color-muted: var(--muted);       /* text-muted   */
+  --color-borderline: var(--border); /* border-borderline */
+  --color-card-border: var(--card-border);
+  --color-accent: var(--accent);     /* bg-accent / text-accent */
+  --color-accent-hover: var(--accent-hover);
+  --color-accent-fg: var(--accent-fg);
+  --color-accent-soft: var(--accent-soft);
+  --color-link: var(--link);         /* text-link */
+  --color-hl-teal: var(--hl-teal);
+  --color-hl-lilac: var(--hl-lilac);
+  --color-hl-amber: var(--hl-amber);
+  --color-hl-deep: var(--hl-deep);
+
+  --shadow-card: var(--shadow-card);
+}
+
+/* ============================================================
+   Base
+   ============================================================ */
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+  }
+
+  body {
+    @apply bg-bg text-content font-sans antialiased;
+  }
+
+  /* anchor targets clear the fixed navbar */
+  section[id],
+  article[id] {
+    scroll-margin-top: 5.5rem;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--focus);
+    outline-offset: 2px;
+    border-radius: 9px;
+  }
+
+  ::selection {
+    background: rgba(13, 148, 136, 0.28);
+    color: var(--text);
+  }
+
+  /* Skip link — visible only when keyboard-focused */
+  .skip-link {
+    @apply fixed left-4 top-4 z-[60] -translate-y-20 rounded-xl bg-accent px-4 py-2 text-sm font-semibold text-accent-fg shadow-card transition-transform;
+  }
+  .skip-link:focus-visible {
+    @apply translate-y-0;
+  }
+}
+
+/* ============================================================
+   Shared utilities / patterns
+   ============================================================ */
+@layer components {
+  /* frosted glass card — layered overlay + hairline + micro elevation */
+  .card {
+    @apply rounded-3xl border border-card-border bg-surface shadow-card backdrop-blur-md;
+  }
+
+  .soft-shadow {
+    box-shadow: var(--shadow-card);
+  }
+
+  /* Hover lift for cards — respects reduced motion */
+  .interactive-lift {
+    transition:
+      transform 0.25s ease,
+      box-shadow 0.25s ease,
+      border-color 0.25s ease;
+  }
+  .interactive-lift:hover {
+    transform: translateY(-4px);
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .interactive-lift:hover {
+      transform: none;
+    }
+  }
+
+  /* Hero / contact decorative background.
+     Light: canvas + accent trio glows + measured white lift to 92%.
+     Dark: near-black canvas with teal + lilac glows. */
+  .gradient-bg {
+    background:
+      radial-gradient(38rem 26rem at 72% 4%, rgba(13, 148, 136, 0.08) 0%, transparent 55%),
+      radial-gradient(30rem 22rem at 6% 55%, rgba(216, 180, 254, 0.12) 0%, transparent 55%),
+      linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.45) 50%, rgba(255, 255, 255, 0.9) 92%),
+      var(--bg);
+  }
+  html.dark .gradient-bg {
+    background:
+      radial-gradient(38rem 26rem at 72% 2%, rgba(13, 148, 136, 0.16) 0%, transparent 55%),
+      radial-gradient(30rem 22rem at 4% 55%, rgba(216, 180, 254, 0.09) 0%, transparent 55%),
+      var(--bg);
+  }
+
+  /* Gradient underline under the hero role words (accent trio).
+     inline-block keeps each word a self-contained box: a crisp thin
+     gradient bar at its bottom edge, immune to line-break slicing. */
+  .mark-t {
+    display: inline-block;
+    padding-bottom: 0.1em;
+    background-image: linear-gradient(90deg, var(--hl-deep) 0%, var(--hl-lilac) 55%, var(--hl-amber) 100%);
+    background-repeat: no-repeat;
+    background-size: 100% 0.14em;
+    background-position: 100% 100%;
+  }
+
+  /* Display type scale (measured: 76px/-2.9px @900 on 1440 → 40px on 375) */
+  .display-hero {
+    font-weight: 900;
+    letter-spacing: -0.038em;
+    line-height: 0.96;
+  }
+  .heading-section {
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    line-height: 1.15;
+  }
+  .kicker {
+    @apply text-[10px] font-black uppercase;
+    letter-spacing: 2px;
+  }
+}
+
+/* If the OS asks for reduced motion, kill CSS transitions wholesale too */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
